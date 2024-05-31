@@ -5,7 +5,7 @@ const app=express()
 require('dotenv').config()
 app.use(cors())
 
-console.log("home ground");
+console.log("home ground1");
 
 app.listen(process.env.port,()=>{
     console.log('Running at server port '+process.env.port);
