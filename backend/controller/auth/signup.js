@@ -22,11 +22,21 @@ let userid=uuid.v4()
 let payload={userid,client_id,password}
 let token=jwt.sign(payload,process.env.secect_key)
 let data={userid,name,client_id,email,token,password,avatar_url}
-let play=await
+let play=async()=>{
+    try {
+        const response = await axios.post('https://jsonplaceholder.typicode.com/posts', {
+          title: 'foo',
+          body: 'bar',
+          userId: 1
+        });
+        console.log(response.data);
+      } catch (error) {
+        console.error('Error making POST request:', error);
+      }
+}
+console.log(play());
 const savedataIndb=async()=>{
     try {
-        // let res = await axios.post('/user/get_all_users/'+client_id)
-        // console.log(res);
         const dbdata=new User(data)
         const save=await dbdata.save();
         console.log(save);

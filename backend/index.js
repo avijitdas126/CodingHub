@@ -16,7 +16,7 @@ app.use(cors())
 app.use(express.json())
 
 /*---Express Router---*/
-app.use('/user/signup',get_all_users)
+app.use('/user/signup/get',get_all_users)
 app.use('/user/get_user',get_user)
 app.use('/user/signup',signup)
 app.use('/user/login',login)
