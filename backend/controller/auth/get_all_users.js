@@ -2,7 +2,7 @@ const express=require('express')
 require('dotenv').config()
 const User=require('../../database/user')
 const get_user=express.Router()
-get_user.post('/get_all_users/:client_id',(req,res)=>{
+get_user.get('/get_all_users/:client_id',(req,res)=>{
 let client_id=req.params.client_id;
 let play=async()=>{
     try {

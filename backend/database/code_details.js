@@ -3,7 +3,7 @@ const { v4: uuidv4 } = require("uuid");
 require("dotenv").config();
 
 mongoose
-  .connect(process.env.mongo_url_offline)
+  .connect(process.env.mongo_url_live)
   .then(() => {
     console.log("Connection Successfully With User DB");
   })

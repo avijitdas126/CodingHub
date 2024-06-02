@@ -19,33 +19,29 @@ if(!avatar_url){
 
 password=bcrypt.hashSync(password,Number(process.env.salt))
 let userid=uuid.v4()
-let payload={userid,client_id,password}
-let token=jwt.sign(payload,process.env.secect_key)
-let data={userid,name,client_id,email,token,password,avatar_url}
-let play=async()=>{
-    try {
-        const response = await axios.post('https://jsonplaceholder.typicode.com/posts', {
-          title: 'foo',
-          body: 'bar',
-          userId: 1
-        });
-        console.log(response.data);
-      } catch (error) {
-        console.error('Error making POST request:', error);
-      }
-}
-console.log(play());
+let payload={userid,client_id}
+let token=jwt.sign(payload,process.env.secect_key,{expiresIn:'90 days'})
 const savedataIndb=async()=>{
     try {
+      let data1=await User.find({client_id})
+      if(data1.length==0){
+        let data={userid,name,client_id,email,token,password,avatar_url}
         const dbdata=new User(data)
         const save=await dbdata.save();
-        console.log(save);
         res.status(200)
         res.send({
             msg:"SignUp SuccessFully Done",
             token,
             code:200
         })
+      }
+      else{
+        res.status(404)
+        res.send({
+            msg:"User Already Exits",
+            code:404
+        })
+      }
     } catch (error) {
         // let res = await axios.post('http://localhost:9000/user/get_all_users/'+client_id)
         // console.log(res);
