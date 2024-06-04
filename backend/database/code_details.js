@@ -3,7 +3,7 @@ const { v4: uuidv4 } = require("uuid");
 require("dotenv").config();
 
 mongoose
-  .connect(process.env.mongo_url_live)
+  .connect(process.env.mongo_url_offline)
   .then(() => {
     console.log("Connection Successfully With User DB");
   })
@@ -44,9 +44,6 @@ let code_detail = new mongoose.Schema({
     type: String,
   }
 });
-/* `let User= new mongoose.model("User",code_detail);` is creating a Mongoose model named "User" based
-on the schema defined in the `code_detail` variable. This model will be used to interact with the
-MongoDB collection named "users" and perform operations like creating, reading, updating, and
-deleting documents in that collection. */
-let codeDetail = new mongoose.model("User",code_detail);
+
+let codeDetail = new mongoose.model("Code_detail",code_detail);
 module.exports=codeDetail
