@@ -5,7 +5,7 @@ require("dotenv").config();
 mongoose
   .connect(process.env.mongo_url_offline)
   .then(() => {
-    console.log("Connection Successfully With User DB");
+    console.log("Connection Successfully With Code DB");
   })
   .catch((err) => {
     console.log(err);

@@ -5,7 +5,7 @@ require("dotenv").config();
 mongoose
   .connect(process.env.mongo_url_offline)
   .then(() => {
-    console.log("Connection Successfully With User DB");
+    console.log("Connection Successfully With Code_details DB");
   })
   .catch((err) => {
     console.log(err);
@@ -15,6 +15,7 @@ mongoose
 `code_detail` for a collection in MongoDB. This schema specifies the structure of documents that
 will be stored in the collection. Each field in the schema corresponds to a key-value pair in the
 documents. */
+
 let code_detail = new mongoose.Schema({
   userid:{
     type: String,
@@ -29,10 +30,10 @@ let code_detail = new mongoose.Schema({
     required: true
   },
   created:{
-    type: Number,
+    type: String,
   },
   updated:{
-    type: Number,
+    type: String,
   },
   web_id:{
     type: String

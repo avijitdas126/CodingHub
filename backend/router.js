@@ -11,6 +11,7 @@ const get_user=require('./controller/auth/getUser')
 const forget_password=require('./controller/auth/forget_password')
 const get_all_users=require('./controller/auth/get_all_users')
 
+const create_a_file=require('./controller/code/create_a_file')
 /*---Express Router---*/
 app.use('/signup/get',get_all_users)
 app.use('/get_user',get_user)
@@ -18,5 +19,6 @@ app.use('/signup',signup)
 app.use('/login',login)
 app.use('/check_token',check_token)
 app.use('/forget_password',forget_password)
+app.use('/code/newfile',create_a_file)
 
 module.exports=app
