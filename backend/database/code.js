@@ -16,11 +16,7 @@ mongoose
 /**
  * 
  * code_id,
-html(decoded),
-html_link:[],
-css_link:[],
-js_link:[],
-combined_code
+html(encoded),
  */
 let code = new mongoose.Schema({
   code_id:{
@@ -30,20 +26,7 @@ let code = new mongoose.Schema({
   html:{
     type: String,
     required: true
-  },
-  html_link:{
-    type: Array,
-  },
-  css_link:{
-    type: Array,
-  },
-  js_link:{
-    type: Array,
-  },
-  combined_code:{
-    type: String,
-  },
- 
+  }
 });
 /**
  * code_id,
@@ -51,15 +34,15 @@ html(decoded),
 combined_code
  * 
  */
-let codehtml = new mongoose.Schema({
+let combined_code = new mongoose.Schema({
     code_id:{
       type: String,
       required: true,
     },
-    html:{
-      type: String,
-      required: true
-    },
+   webid:{
+    type: String,
+    required: true,
+   },
     combined_code:{
       type: String,
     },
@@ -98,7 +81,7 @@ js(decoded),
   });
 
 let Code = new mongoose.model("Code",code);
-let Codehtml = new mongoose.model("Codehtml",codehtml);
+let Combine_code = new mongoose.model("Combine_code",combined_code);
 let Codecss = new mongoose.model("Codecss",codecss);
 let Codejs = new mongoose.model("Codejs",codejs);
-module.exports={Code,Codehtml,Codecss,Codejs}
+module.exports={Code,Combine_code,Codecss,Codejs}

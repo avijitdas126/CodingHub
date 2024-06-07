@@ -17,34 +17,31 @@ will be stored in the collection. Each field in the schema corresponds to a key-
 documents. */
 
 let code_detail = new mongoose.Schema({
-  userid:{
+  userid: {
     type: String,
     required: true,
   },
-  code_id:{
+  code_id: {
     type: String,
     required: true,
   },
-  file_name:{
+  file_name: {
     type: String,
-    required: true
+    required: true,
   },
-  created:{
-    type: String,
-  },
-  updated:{
+  created: {
     type: String,
   },
-  web_id:{
-    type: String
-  },
-  public_url:{
-    type: String
-  },
-  community_id:{
+  web_id: {
     type: String,
-  }
+  },
+  public_url: {
+    type: String,
+  },
+  community_id: {
+    type: String,
+  },
 });
 
-let codeDetail = new mongoose.model("Code_detail",code_detail);
-module.exports=codeDetail
+let codeDetail = new mongoose.model("Code_detail", code_detail);
+module.exports = codeDetail;

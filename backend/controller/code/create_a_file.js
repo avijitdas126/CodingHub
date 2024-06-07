@@ -13,9 +13,10 @@ const create_a_file=express.Router()
 //--------------------------------------------------------
 create_a_file.post('/',(req,res)=>{
     let {token,file_name}=req.body
+    let fle={file_name:file_name+'.html'}
     let play=async()=>{
         try {
-            let result=await codeDetail.find({file_name})
+            let result=await codeDetail.find(fle)
              console.log(result);
             if(result.length==0){
                 let code_id=uuidv4();
@@ -37,7 +38,7 @@ create_a_file.post('/',(req,res)=>{
                 console.log('error');
                 res.status(404)
                 res.send({
-                    msg:"Error occured!File already exits.",
+                    msg:"Error occured! File already exits.",
                     code:404
                 })
             }
