@@ -30,6 +30,7 @@ create_a_file.post('/',(req,res)=>{
                 let resq= new codeDetail(payload)
                 let save=await resq.save()
                 res.send({
+                    code_id,
                     msg:"File created successfully",
                     code:200
                 })

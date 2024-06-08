@@ -25,7 +25,6 @@ let code = new mongoose.Schema({
   },
   html:{
     type: String,
-    required: true
   }
 });
 /**
@@ -61,7 +60,6 @@ css(decoded)
     },
     css:{
       type: String,
-      required: true
     }
   });
   /**
@@ -76,7 +74,6 @@ js(decoded),
     },
     js:{
       type: String,
-      required: true
     }
   });
 

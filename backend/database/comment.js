@@ -12,10 +12,10 @@ mongoose
 /**
  * 
  * community_id,
-comment_id,
-sender_id:user_id,
-comment_data,
-mention_id:comment_id
+ * comment_id,
+ *sender_id:user_id,
+  comment_data,
+  mention_id:comment_id
  */
 let comment = new mongoose.Schema({
     community_id:{
@@ -36,24 +36,6 @@ let comment = new mongoose.Schema({
     type:String ,
   },
 });
-/**
- * community_id: uuid(12),
-code_id:code_id
- * 
- * 
- */
-
-let community = new mongoose.Schema({
-    community_id:{
-    type: String,
-    required: true,
-  },
-  code_id:{
-    type: String,
-    required: true
-  },
-});
-let Community = new mongoose.model("Community",community);
 let Comment = new mongoose.model("Comment",comment);
 
 module.exports={Community,Comment}

@@ -21,7 +21,8 @@ try {
     if(res25.length!=0 && data.userid==res25[0].userid){
         let res21=await Codecss.find({code_id})      
         let res22=await Codejs.find({code_id}) 
-        let res23=await Code.find({code_id}) 
+        let res23=await Code.find({code_id})
+        if(res23.length!=0){
 const encodedHtml=res23[0].html
 let data={
 html:decode(encodedHtml),
@@ -29,6 +30,14 @@ css:res21[0].css,
 js:res22[0].js
 }
 res.send(data)
+        }
+        else{
+            res.send({
+                html:"",
+                css:"",
+                js:""
+                })
+        }
     }
     else{
         res.status(404)
@@ -43,6 +52,7 @@ res.send(data)
         msg:"Error Exits.",
         code:404
     })
+    console.log(error.message);
 }
     }
     play()
