@@ -3,14 +3,14 @@ dependencies. Here's what each line is doing: */
 const express=require('express')
 const app=express()
 require('dotenv').config()
-
+//-----------------------------------------------------
 const check_token=require('./controller/auth/check_token')
 const login=require('./controller/auth/login')
 const signup=require('./controller/auth/signup')
 const get_user=require('./controller/auth/getUser')
 const forget_password=require('./controller/auth/forget_password')
 const get_all_users=require('./controller/auth/get_all_users')
-
+//--------------------------------------------------------
 const see_code=require('./controller/code/show_code')
 const save_code=require('./controller/code/save_code')
 const get_code=require('./controller/code/get_code')
@@ -19,6 +19,12 @@ const public=require('./controller/code/public')
 const create_a_file=require('./controller/code/create_a_file')
 const community=require('./controller/code/community')
 const delete_file=require('./controller/code/delete')
+const comment=require('./controller/code/comment')
+const favarite=require('./controller/code/favarite')
+//--------------------------------------------------------------
+const update_User=require('./controller/userProfile/user_details')
+const follow=require('./controller/userProfile/follow')
+
 /*---Express Router---*/
 app.use('/signup/get',get_all_users)
 app.use('/get_user',get_user)
@@ -34,4 +40,8 @@ app.use('/live/public',webid)
 app.use('/code',public)
 app.use('/code/deletecode',delete_file)
 app.use('/live/community',community)
+app.use('/comment',comment)
+app.use('/favarite',favarite)
+app.use('/follow',follow)
+app.use('/edit',update_User)
 module.exports=app
