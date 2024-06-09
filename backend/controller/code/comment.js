@@ -5,36 +5,58 @@ const { encode } = require('html-entities');
 const codeDetail=require('../../database/code_details')
 const { v4: uuidv4 } = require("uuid");
 const moment = require('moment');
+const communitydb=require('../../database/community')
 const commentdb=require('../../database/comment')
 const comment = express.Router();
+
+// post a comment
+/**
+ * {token,code_id,comment,mention_id}
+ * {msg:"Comment added successfully",code:200}
+ */
 
 comment.post("/post", (req, res) => {
 let {token,code_id,comment,mention_id}=req.body
 let data=jwt.verify(token,process.env.secect_key);
 let play=async()=>{
-    try {
-        let res25=await codeDetail.find({code_id})
-        if(res25.length!=0 && data.userid==res25[0].userid){
-            let community_id=res25[0].community_id
+try {
+let res25=await codeDetail.find({code_id})
+let date=moment().format('lll'); 
+let community_id=res25[0].community_id
+let comment_id=uuidv4()
 if(mention_id.length==0){
 let comments=new commentdb({
     community_id,
-    // comment_id
-    //process----end2---start----from---this---part-----
+    comment_id,
+    created:date,
+    sender_id:data.userid,
+    comment_data:comment,
+    mention_id:null
 })
-}else{
-
-}
-
-
-        }else{
-            res.status(404)
-            res.send({
-                msg:"Invalid Token",
-                code:404
-            })
-        }
+let no=await communitydb.updateOne({community_id},{
+    $push:{
+        no_of_comment:comment_id
     }
+})
+let save=await comments.save()
+console.log(save);
+}else{
+    let comments=new commentdb({
+        community_id,
+        comment_id,
+        created:date,
+        sender_id:data.userid,
+        comment_data:comment,
+        mention_id:null
+    })
+    let save=await comments.save()
+    console.log(save);
+}
+res.send({
+    msg:"Comment added successfully",
+    code:200
+})
+}
  catch (error) {
     res.status(404)
     res.send({
@@ -43,26 +65,23 @@ let comments=new commentdb({
     })
     console.log(error.message);
 }
-    }
-    play()
+}
+play()
 })
+
+// get list of all comments
+/**
+ * {token,community_id}
+ * {[]}
+ */
+
 comment.post("/", (req, res) => {
     let {token,community_id}=req.body
     let data=jwt.verify(token,process.env.secect_key);
     let play=async()=>{
         try {
-            let res25=await codeDetail.find({community_id})
-            if(res25.length!=0 && data.userid==res25[0].userid){
-    
-    
-    
-            }else{
-                res.status(404)
-                res.send({
-                    msg:"Invalid Token",
-                    code:404
-                })
-            }
+            let res25=await commentdb.find({community_id})
+            res.send(res25)
         }
      catch (error) {
         res.status(404)
@@ -75,5 +94,4 @@ comment.post("/", (req, res) => {
         }
         play()
     })
-
 module.exports=comment
