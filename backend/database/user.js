@@ -19,7 +19,7 @@ let user = new mongoose.Schema({
     required: true,
   },
   name: {
-    type: String,
+    type: String,//editable
     required: true,
   },
   client_id: {
@@ -27,7 +27,7 @@ let user = new mongoose.Schema({
     required: true,
   },
   email: {
-    type: String,
+    type: String,//editable
     required: true,
   },
   token: {
@@ -48,7 +48,7 @@ let user = new mongoose.Schema({
     type: Array,
   },
   bio: {
-    type: String,
+    type: String,//editable
   },
 });
 /* `let User = new mongoose.model("User", user);` is creating a Mongoose model named "User" based on

@@ -19,19 +19,37 @@ no_of_comments:
  * 
  */
   let community = new mongoose.Schema({
+    userid:{
+      type: String,
+      required: true,
+    },
     code_id: {
       type: String,
       required: true,
     },
+    title:{
+      type: String,
+      required: true,
+    },
+    description:{
+      type: String,
+      required: true,
+    },
+    created:{
+      type: String,
+    },
     no_of_comment: {
-      type: Number,
+      type: Array,
     },
     favarite: {
-      type: Number,
+      type: Array,
     },
     community_id: {
       type: String,
       required: true,
+    },
+    tags:{
+      type: Array,
     }
   });
   

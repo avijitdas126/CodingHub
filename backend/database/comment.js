@@ -4,7 +4,7 @@ require("dotenv").config();
 mongoose
   .connect(process.env.mongo_url_offline)
   .then(() => {
-    console.log("Connection Successfully With User DB");
+    console.log("Connection Successfully With Comment DB");
   })
   .catch((err) => {
     console.log(err);
@@ -26,6 +26,9 @@ let comment = new mongoose.Schema({
     type: String,
     required: true
   },
+  created:{
+    type: String,
+  },
   sender_id:{
     type:String ,
   },
@@ -38,4 +41,4 @@ let comment = new mongoose.Schema({
 });
 let Comment = new mongoose.model("Comment",comment);
 
-module.exports={Community,Comment}
+module.exports=Comment
