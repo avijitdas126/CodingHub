@@ -19,6 +19,9 @@ app.use(cors())
 app.use(express.json())
 
 app.use('/user',router)
+app.get('*',(req,res)=>{
+    res.sendFile(__dirname+"/path_404.html")
+})
 app.all('*',(req,res)=>{
     
     res.status(500);
