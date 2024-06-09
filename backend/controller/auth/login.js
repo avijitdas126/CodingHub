@@ -17,7 +17,6 @@ login.post('/',(req,res)=>{
 let {client_id,token,password}=req.body
 let play= async()=>{
     try {
-        console.log(password);
         if(token.length!=0){
             let data=jwt.verify(token,process.env.secect_key)
             let userid=data.userid;
@@ -25,10 +24,10 @@ let play= async()=>{
             let password1=bcrypt.compareSync(password,result[0].password);
           //console.log(password,result);
           if(password1){
-            res.send(token)
+            res.send({token})
           }
           else{
-            res.code(404)
+            res.status(404)
             res.send({
                 msg:"Invaild Password",
                 code:404
@@ -43,7 +42,7 @@ let play= async()=>{
                     res.send({token:result[0].token})
                   }
                   else{
-                    res.code(404)
+                    res.status(404)
                     res.send({
                         msg:"Invaild Password",
                         code:404
@@ -75,7 +74,7 @@ let play= async()=>{
                     res.send({token,msg:"Updated Successfully"})
                   }
                   else{
-                    res.code(404)
+                    res.status(404)
                     res.send({
                         msg:"Invaild Password",
                         code:404

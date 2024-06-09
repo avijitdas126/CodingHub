@@ -2,6 +2,8 @@ const express = require("express");
 const jwt=require('jsonwebtoken')
 require('dotenv').config()
 const User=require('../../database/user')
+let code_detail=require('../../database/code_details')
+let communitydb=require('../../database/community')
 const get_user = express.Router();
 
 /**
@@ -18,15 +20,18 @@ try {
     let userid=data.userid;
     let client_id=data.client_id;
     let dat=await User.find({userid,client_id})
+    let codes=await code_detail.find({userid})
+    let community=await communitydb.find({userid})
     if(dat.length!=0){
         let payload={
             name:dat[0].name,
             email:dat[0].email,
             avatar_url:dat[0].avatar_url,
-            followers:dat[0].followers,
-            follows:dat[0].follows,
-            bio:dat[0].bio
-            // codes:
+            followers:(dat[0].followers).length,
+            follows:(dat[0].follows).length,
+            bio:dat[0].bio,
+            codes,
+            community
         }
         res.send(payload)
     }

@@ -3,9 +3,9 @@ const { v4: uuidv4 } = require("uuid");
 require("dotenv").config();
 
 mongoose
-  .connect(process.env.mongo_url_live)
+  .connect(process.env.mongo_url_offline)
   .then(() => {
-    console.log("Connection Successfully With User DB");
+    console.log("Connection Successfully With Code_details DB");
   })
   .catch((err) => {
     console.log(err);
@@ -15,38 +15,33 @@ mongoose
 `code_detail` for a collection in MongoDB. This schema specifies the structure of documents that
 will be stored in the collection. Each field in the schema corresponds to a key-value pair in the
 documents. */
+
 let code_detail = new mongoose.Schema({
-  userid:{
+  userid: {
     type: String,
     required: true,
   },
-  code_id:{
+  code_id: {
     type: String,
     required: true,
   },
-  file_name:{
+  file_name: {
     type: String,
-    required: true
+    required: true,
   },
-  created:{
-    type: Number,
-  },
-  updated:{
-    type: Number,
-  },
-  web_id:{
-    type: String
-  },
-  public_url:{
-    type: String
-  },
-  community_id:{
+  created: {
     type: String,
-  }
+  },
+  web_id: {
+    type: String,
+  },
+  public_url: {
+    type: String,
+  },
+  community_id: {
+    type: String,
+  },
 });
-/* `let User= new mongoose.model("User",code_detail);` is creating a Mongoose model named "User" based
-on the schema defined in the `code_detail` variable. This model will be used to interact with the
-MongoDB collection named "users" and perform operations like creating, reading, updating, and
-deleting documents in that collection. */
-let codeDetail = new mongoose.model("User",code_detail);
-module.exports=codeDetail
+
+let codeDetail = new mongoose.model("Code_detail", code_detail);
+module.exports = codeDetail;

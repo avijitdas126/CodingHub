@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+    <!-- <style>
+        *{background:red;}
+    </style> -->
+</head>
+<body>
+    <h1>
+        Hello
+    </h1>
+<script>
+let play=async ()=>{
+    const res=await fetch("http://localhost:9000/user/get/css/589c93d5-5ae8-4dbb-a6de-fe0ecf2f8762/1")
+    const css=await res.text()
+    let head=document.querySelector('head')
+    let style=document.createElement('style')
+    style.innerText=css
+    head.append(style)
+    console.log(head,css);
+}
+play()
+</script>
+
+    <script src="http://localhost:9000/user/get/js/589c93d5-5ae8-4dbb-a6de-fe0ecf2f8762/2"></script>
+</body>
+</html>
