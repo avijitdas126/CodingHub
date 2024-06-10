@@ -47,7 +47,7 @@ console.log(save);
         created:date,
         sender_id:data.userid,
         comment_data:comment,
-        mention_id:null
+        mention_id
     })
     let save=await comments.save()
     console.log(save);

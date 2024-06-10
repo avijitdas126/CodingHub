@@ -50,6 +50,9 @@ let user = new mongoose.Schema({
   bio: {
     type: String,//editable
   },
+  views:{
+    type: Array,
+  }
 });
 /* `let User = new mongoose.model("User", user);` is creating a Mongoose model named "User" based on
 the schema defined in the variable `user`. This model will be used to interact with the "User"
