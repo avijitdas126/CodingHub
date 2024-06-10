@@ -32,6 +32,7 @@ const savedataIndb=async()=>{
         res.send({
             msg:"SignUp SuccessFully Done",
             token,
+            userid,
             code:200
         })
       }
