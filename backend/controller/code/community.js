@@ -4,6 +4,8 @@ const jwt=require('jsonwebtoken')
 const codeDetail=require('../../database/code_details')
 const { v4: uuidv4 } = require("uuid");
 const moment = require('moment');
+const { decode } = require('html-entities');
+const {Code,Codehtml,Codecss,Codejs}=require('../../database/code')
 const communitydb=require('../../database/community');
 const community = express.Router();
 
@@ -187,22 +189,41 @@ community.post("/edit", (req, res) => {
 play()
 })
 
-community.post('/own',(req,res)=>{
+community.post('/showcode',(req,res)=>{
     let {token,community_id}=req.body
     let data=jwt.verify(token,process.env.secect_key);
     let play=async()=>{
         try {
             let res25=await communitydb.find({community_id})
-            if(res25.length!=0 && data.userid==res25[0].userid){
-res.send(res25)
-            }
-    else{
-            res.status(404)
-            res.send({
-                msg:"Invalid Token",
-                code:404
-            })
+            let code_id=res25[0].code_id
+            let res21=await Codecss.find({code_id})      
+            let res22=await Codejs.find({code_id}) 
+            let res23=await Code.find({code_id})
+if(data.userid!=res25[0].userid){
+    let views=await communitydb.updateOne({community_id},{
+        $push:{
+            views:data.userid
         }
+    })
+}
+if(res23.length!=0){
+    const encodedHtml=res23[0].html
+    let data={
+    html:decode(encodedHtml),
+    css:res21[0].css,
+    js:res22[0].js,
+    community_details:res25
+    }
+    res.send(data)
+            }
+            else{
+                res.send({
+                    html:"",
+                    css:"",
+                    js:"",
+                    community_details:res25
+                    })
+            }
     } catch (error) {
         res.status(404)
             res.send({
@@ -214,4 +235,6 @@ res.send(res25)
 }
 play()
 })
+
+
 module.exports = community;

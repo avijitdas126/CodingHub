@@ -50,6 +50,9 @@ no_of_comments:
     },
     tags:{
       type: Array,
+    },
+    views:{
+      type: Array, 
     }
   });
   

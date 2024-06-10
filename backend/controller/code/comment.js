@@ -16,13 +16,12 @@ const comment = express.Router();
  */
 
 comment.post("/post", (req, res) => {
-let {token,code_id,comment,mention_id}=req.body
+let {token,community_id,comment,mention_id}=req.body
 let data=jwt.verify(token,process.env.secect_key);
 let play=async()=>{
 try {
-let res25=await codeDetail.find({code_id})
+let res25=await codeDetail.find({community_id})
 let date=moment().format('lll'); 
-let community_id=res25[0].community_id
 let comment_id=uuidv4()
 if(mention_id.length==0){
 let comments=new commentdb({
@@ -47,7 +46,7 @@ console.log(save);
         created:date,
         sender_id:data.userid,
         comment_data:comment,
-        mention_id:null
+        mention_id
     })
     let save=await comments.save()
     console.log(save);

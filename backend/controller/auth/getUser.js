@@ -13,25 +13,34 @@ const get_user = express.Router();
 }
  */
 get_user.post("/", (req, res) => {
-    let {token}=req.body
+    let {token,userid}=req.body
     let data=jwt.decode(token)
     let play=async()=>{
 try {
-    let userid=data.userid;
-    let client_id=data.client_id;
-    let dat=await User.find({userid,client_id})
+    let userid1=data.userid;
+    if(userid!=userid1){
+        let views=await User.updateOne({userid},{
+            $push:{
+                views:userid1
+            }
+        })
+        console.log(views);
+    }
+    let dat=await User.find({userid})
     let codes=await code_detail.find({userid})
     let community=await communitydb.find({userid})
     if(dat.length!=0){
         let payload={
             name:dat[0].name,
             email:dat[0].email,
+            username:dat[0].client_id,
             avatar_url:dat[0].avatar_url,
             followers:(dat[0].followers).length,
             follows:(dat[0].follows).length,
             bio:dat[0].bio,
             codes,
-            community
+            community,
+            views:dat[0].views
         }
         res.send(payload)
     }
@@ -42,7 +51,6 @@ try {
             code:404
         })
     }
-    //console.log(dat);
 } catch (error) {
     res.status(404)
         res.send({

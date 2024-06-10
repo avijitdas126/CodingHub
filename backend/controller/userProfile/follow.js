@@ -21,16 +21,20 @@ const play=async()=>{
             }
         }
             if(!bool){
+                let follower=await User.updateOne({userid:follower_id},{
+                    $push:{
+                        followers:userid
+                    }
+                })
+
+
+
                 let follow=await User.updateOne({userid},{
                     $push:{
                         follows:follower_id
                     }
                 })
-                let follower=await User.updateOne({follower_id},{
-                    $push:{
-                        followers:userid
-                    }
-                })
+               
                 console.log(follow,follower);
         res.send({
             msg:"Follow add successfully",
@@ -53,6 +57,7 @@ const play=async()=>{
             console.log(error.message);
     }
 }
+play()
 })
 
 module.exports =follow;
