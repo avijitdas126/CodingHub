@@ -200,7 +200,7 @@ community.post('/showcode',(req,res)=>{
             let res22=await Codejs.find({code_id}) 
             let res23=await Code.find({code_id})
 if(data.userid!=res25[0].userid){
-    let views=await communitydb.updateOne({userid},{
+    let views=await communitydb.updateOne({community_id},{
         $push:{
             views:data.userid
         }

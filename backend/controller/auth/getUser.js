@@ -33,6 +33,7 @@ try {
         let payload={
             name:dat[0].name,
             email:dat[0].email,
+            username:dat[0].client_id,
             avatar_url:dat[0].avatar_url,
             followers:(dat[0].followers).length,
             follows:(dat[0].follows).length,
