@@ -13,14 +13,14 @@ const create_a_file=express.Router()
 //--------------------------------------------------------
 create_a_file.post('/',(req,res)=>{
     let {token,file_name}=req.body
-    let fle={file_name:file_name+'.html'}
+    let data=jwt.verify(token,process.env.secect_key);
     let play=async()=>{
         try {
+            let fle={file_name:file_name+'.html',userid:data.userid}
             let result=await codeDetail.find(fle)
              console.log(result);
             if(result.length==0){
                 let code_id=uuidv4();
-                let data=jwt.verify(token,process.env.secect_key);
                 let userid=data.userid;
                 let date=moment().format('lll'); 
                 let payload={
