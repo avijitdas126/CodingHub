@@ -5,13 +5,14 @@ const User=require('../../database/user')
 const follow= express.Router();
 
 follow.post("/", (req, res) => {
-let {token,name,email,bio}=req.body
+let {token,name,email,bio,avatar_url}=req.body
 let data=jwt.verify(token,process.env.secect_key);
 const play=async()=>{
     try {
         let userid=data.userid
         let update=await User.updateOne({userid},{
             $set:{
+                avatar_url,
                 name,
                 email,
                 bio
