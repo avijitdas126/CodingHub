@@ -1,0 +1,59 @@
+[{"signup":[
+{
+    "key":"1",
+   "type":"text",
+   "label":"Your Full Name",
+   "placeholder":"Enter your Name",
+   "required":true 
+},
+{
+    "key":"1",
+   "type":"text",
+   "label":"Your User Name",
+   "placeholder":"Enter your Name",
+   "required":true 
+},
+{
+    "key":"1",
+   "type":"file",
+   "label":"Choose Profile",
+   "placeholder":"Upload Your Profile Picture",
+   "required":false
+},
+{
+    "key":"1",
+   "type":"email",
+   "label":"Email",
+   "placeholder":"Enter your Email",
+   "required":true 
+},
+{
+    "key":"1",
+   "type":"text",
+   "label":"Password ",
+   "placeholder":"Enter your Password",
+   "required":true 
+}]},
+{
+    "login":[
+        {
+            "key":"1",
+           "type":"text",
+           "label":"Your User Name",
+           "placeholder":"Enter your Name",
+           "required":true 
+        },
+        {
+            "key":"1",
+           "type":"text",
+           "label":"Password ",
+           "placeholder":"Enter your Password",
+           "required":true 
+        } 
+    
+    ]
+
+
+}
+
+]
