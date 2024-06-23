@@ -1,23 +1,28 @@
 import {React,useState}  from 'react'
 import AceEditor from 'react-ace';
+import 'ace-builds/src-noconflict/mode-html';
 import 'ace-builds/src-noconflict/mode-css';
+import 'ace-builds/src-noconflict/mode-javascript';
 
-function Css(props) {
-    const handleChange = (newValue) => {
-        console.log('change', newValue);
-      };
+function Editorjs(props) {
+    let {type,code,theme,font,bool,class1,handle,readonly }=props
+      let width='100%'
+      let data='hello'
   return (
     <>
     <AceEditor
-        mode="css"
-        theme={props.theme}
+    className={class1}
+        mode={type}
+        theme={theme}
         name="ace-editor"
-        onChange={handleChange}
-        fontSize={14}
+        onChange={(data1)=>handle({"code":data1,type})}
+        fontSize={Number(font)}
         showPrintMargin={true}
         showGutter={true}
         highlightActiveLine={true}
-        value={`*{margin:0;padding:0;}`}
+        value={code}
+        width={width}
+        readOnly={readonly}
         setOptions={{
           enableBasicAutocompletion: true,
           enableLiveAutocompletion: true,
@@ -31,4 +36,4 @@ function Css(props) {
   )
 }
 
-export default Css
+export default Editorjs

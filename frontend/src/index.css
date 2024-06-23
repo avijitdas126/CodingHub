@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+.buttn{
+    @apply bg-gray-600 flex justify-around hover:bg-gray-700  p-3  w-[80px] text-white font-bold text-center rounded cursor-pointer  ;
+}
+.active{
+    @apply hover:bg-gray-700
+}
+.btn{
+    @apply bg-green-600 text-white p-2 rounded m-2 hover:bg-green-700 text-center flex justify-around gap-2 h-10
+}
+.btn1{
+    @apply  p-2 rounded m-2 hover:bg-gray-500 hover:text-white text-center flex justify-around gap-2 h-10
+}
+.btnactive{
+@apply bg-gray-500 text-white
+}
+}
