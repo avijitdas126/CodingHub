@@ -54,6 +54,36 @@
     ]
 
 
+},
+{
+   "dashboard":[
+    {
+        
+        "item":"Recent",
+        "route":"/"
+    },
+    {
+        "item":"Live Project" ,
+        "route":"/"
+    },
+    {
+        "item":"Community",
+        "route":"/"
+    },
+    {
+        "item":"Assets",
+        "route":"/"
+    },
+    {
+        "item":"Profile",
+        "route":"/"
+    },
+    {
+        "item":"Logout",
+        "route":"/"
+    }
+
+   ]
 }
 
 ]

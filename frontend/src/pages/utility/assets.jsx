@@ -21,9 +21,9 @@ setTimeout(()=>{
         <div>
             <img src={url} alt={'asset-'+index} className='rounded aspect-video' />
         </div>
-        <div className='flex justify-around p-4 relative'>
+        <div className='flex justify-around pt-2 text-black relative'>
 <Copy className='hover:p-1 rounded hover:bg-slate-700 hover:text-white cursor-pointer' onClick={handleCopy}/>
-<span className={`bg-black text-white p-1 rounded absolute top-10 left-10 ${copy?'block':'hidden'}`} >Copied</span>
+<span className={` bg-slate-500 text-white p-1 rounded absolute top-10 left-10 ${copy?'block':'hidden'}`} >Copied</span>
 <Delete className='hover:p-1 rounded hover:bg-slate-700 hover:text-white cursor-pointer' />
         </div>
     </div>

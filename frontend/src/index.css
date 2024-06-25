@@ -18,4 +18,13 @@
 .btnactive{
 @apply bg-gray-500 text-white
 }
+.logs{
+    @apply -translate-y-[2.3rem]
+}
+.log{
+    @apply -translate-y-5
+}
+.like{
+    @apply bg-white text-black p-1 rounded
+}
 }

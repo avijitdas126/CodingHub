@@ -175,15 +175,15 @@ function Theme(props) {
 
       <div className="relative ">
         <div
-          className={`absolute -top-4 right-0 z-50 bg-gray-400 grid gap-10 m-2 w-1/2 mr-3 shadow-inner pb-3 p-4 rounded hover:shadow-2xl ${
+          className={`absolute -top-4 right-0 z-50 bg-gray-400 grid gap-10 m-2 w-[70%] lg:w-1/2 mr-4 shadow-inner p-5 rounded hover:shadow-2xl ${
             active ? "hidden" : "block"
           }`}
         >
-          <div>
+          <div className="">
             <label htmlFor="theme-select">Select Theme: </label>
             <select
               id="theme-select"
-              className="bg-gray-100 px-2 py-1"
+              className="bg-gray-100 px-1 py-1 m-1"
               value={theme}
               onChange={handleThemeChange}
             >
@@ -198,7 +198,7 @@ function Theme(props) {
             <label htmlFor="font-select">Select Font Size: </label>
             <select
               id="font-select"
-              className="bg-gray-100 px-2 py-1 ml-4"
+              className="bg-gray-100 px-2 py-1"
               value={font}
               onChange={handlefontChange}
             >
