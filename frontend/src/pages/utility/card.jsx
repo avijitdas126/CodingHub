@@ -30,8 +30,8 @@ function Card(props) {
   );
   return (
     <>
-      <div className=" cursor-pointer flex justify-between relative bg-electric_indigo-500 text-white p-4 m-3 rounded shadow hover:shadow-2xl">
-        <div className="grid gap-2 m-2 w-3/4">
+      <div className=" cursor-pointer flex justify-between relative bg-electric_indigo-500 text-white px-2 py-1 m-3 rounded shadow hover:shadow-2xl">
+        <div className="grid gap-1 m-2 w-3/4">
           <h2 className="font-bold text-2xl">
             <a href="#">
               {file_name}
@@ -42,10 +42,7 @@ function Card(props) {
             <a href="">{user_name}</a>
           </h6>
           <p className="text-gray-100 text-justify">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse quas
-            maxime nesciunt inventore laborum amet nam delectus hic atque
-            incidunt reiciendis numquam ducimus magni non molestias recusandae
-            cupiditate, sapiente dignissimos?
+          {des}
           </p>
           {bool && code}
         </div>

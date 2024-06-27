@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import AceEditor from "react-ace";
-import { Code, Braces, FileJson2, Play, Save, Settings } from "lucide-react";
+import { Code, Braces, FileJson2, Play, Save, Settings, Upload } from "lucide-react";
 // Import Ace Editor themes
 import "ace-builds/src-noconflict/theme-monokai";
 import "ace-builds/src-noconflict/theme-github";
@@ -84,6 +84,7 @@ function Theme(props) {
   const [simplecode, setsimplecode] = useState(
     "<h1>Hello World</h1>\n<p>Hello</p>"
   );
+  const [upload, setupload] = useState(false)
   const [active, setactive] = useState(true);
   const [data, setdata] = useState("");
   const handleChange = (data) => {
@@ -144,7 +145,9 @@ function Theme(props) {
   useEffect(() => {
     localStorage.setItem("font", font);
   }, [font]);
-
+const uploadmodal=()=>{
+setupload(!upload)
+}
   return (
     <div>
       <div className="flex justify-between bg-indigo-700 text-white fixed z-50 w-full top-0">
@@ -157,8 +160,12 @@ function Theme(props) {
           </h6>
         </div>
         <div className="flex flex-wrap items-center">
+        
           <button className="btn">
             <Save /> Save
+          </button>
+          <button className="btn" onClick={uploadmodal}>
+            <Upload /> Upload
           </button>
           <button className="btn">
             <Play />
@@ -294,4 +301,4 @@ function Theme(props) {
   );
 }
 
-export default Theme;
+export default React.memo(Theme);

@@ -52,4 +52,4 @@ console
   );
 }
 
-export default Result;
+export default React.memo(Result);

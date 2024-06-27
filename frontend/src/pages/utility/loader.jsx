@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Loader() {
+function Loader({timing,stop,type,}) {
   return (
     <>
-    <div className=''>
+    <div className='w-[100vw] h-[100vh]'>
 
     </div>
     
