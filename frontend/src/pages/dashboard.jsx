@@ -71,13 +71,11 @@ if(Number(code)==200){
 }
 else{
   toast.error(msg)
-  setmodel(!reload)
 }
       } catch (error) {
         toast.error('Something Wrong Went!')
         input.current.value=''
         setmodel(false)
-        setmodel(!reload)
       }
       
 
@@ -138,7 +136,7 @@ else{
 
 
 
-  <ToastContainer />
+  
   <div className={`fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 ${model?'block':'hidden'}`  }>
   <div className="bg-white p-8 rounded-lg shadow-lg relative">
         <button className="absolute top-2 right-2 text-black" onClick={onClose}>
@@ -161,7 +159,7 @@ else{
         
       </div>
         {/* <h1 className='font-extrabold text-2xl mb-5 mx-auto'>Create a New File</h1> */}
-       
+        
       </div>
   </div>
   <div className='btn w-10 fixed bottom-2 right-5 z-50 cursor-pointer' onClick={open}>
@@ -170,6 +168,7 @@ else{
       </div>
       
       </div>
+      <ToastContainer />
     </>
   )
 }

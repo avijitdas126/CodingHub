@@ -7,6 +7,9 @@ import {
   ThumbsUp,
 } from "lucide-react";
 import React, { useState,useRef,useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import Cookies from 'js-cookie';
 import { Link,useNavigate } from "react-router-dom";
 
 function Card(props) {
@@ -32,8 +35,39 @@ function Card(props) {
   const livedeploy=()=>{
 let id=card.current.id
 let file_na=card.current.getAttribute('name')
+
 if(ele.web_id){
 //day-4 start here
+const data={
+  'code_id':id,
+  'token':Cookies.get('token'),
+  'webid':ele.web_id
+}
+const play = async () => {
+  try {
+    let res = await fetch("http://localhost:9000/user/live/public/again", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    let json = await res.json();
+    console.log(json);
+    let { code, msg } = json;
+
+    if (Number(code) == 200) {
+      alert('Your is redeploy in :'+ ele.public_url)
+      toast.success(msg);
+      
+    } else {
+      toast.error(msg);
+    }
+  } catch (err) {
+    throw new Error(err.message);
+  }
+};
+play();
 }else{
   // console.log(ele)
   navi('/webid/'+file_na+'.html/'+id)
@@ -58,6 +92,7 @@ if(ele.web_id){
   );
   return (
     <>
+    
       <div className=" cursor-pointer flex justify-between relative bg-electric_indigo-500 text-white px-2 py-1 m-3 rounded shadow hover:shadow-2xl" id={file_id}  ref={card} name={file_name}>
         <div className="grid gap-1 m-2 w-3/4">
           <h2 className="font-bold text-2xl">
@@ -107,6 +142,7 @@ if(ele.web_id){
 
         )}
       </div>
+      <ToastContainer />
     </>
   );
 }

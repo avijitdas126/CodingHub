@@ -12,7 +12,7 @@ check_token.post('/',(req,res)=>{
 try {
     let data= jwt.verify(token,process.env.secect_key)
     res.send({
-        bool:true
+        bool:data
     })
 } catch (error) {
     res.send({
