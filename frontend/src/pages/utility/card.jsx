@@ -6,18 +6,46 @@ import {
   PersonStanding,
   ThumbsUp,
 } from "lucide-react";
-import React, { useState } from "react";
+import React, { useState,useRef,useEffect } from "react";
+import { Link,useNavigate } from "react-router-dom";
 
 function Card(props) {
-  let { file_name, user_name, client_id, file_id, des, bool } = props;
+  const card = useRef(0)
+  let navi=useNavigate()
+  let { file_name, user_name, client_id, file_id, des, bool ,created_at,ele } = props;
   const [like, setlike] = useState(false);
   const [act, setact] = useState(false);
+  const [pub, setpub] = useState(false)
   const handle = () => {
     setlike(!like);
   };
   const hand = () => {
     setact(!act);
   };
+  useEffect(() => {
+    if(ele.web_id){
+      setpub(true)
+    console.log()
+    }
+  }, [])
+  
+  const livedeploy=()=>{
+let id=card.current.id
+let file_na=card.current.getAttribute('name')
+if(ele.web_id){
+//day-4 start here
+}else{
+  // console.log(ele)
+  navi('/webid/'+file_na+'.html/'+id)
+}
+
+  }
+  const deletecode=()=>{
+
+  }
+  const communitycode=()=>{
+
+  }
   let code = (
     <div className="flex w-1/4 justify-start gap-5 items-center my-4">
       <ThumbsUp onClick={handle} className={`${like && "like"}`} />
@@ -30,16 +58,18 @@ function Card(props) {
   );
   return (
     <>
-      <div className=" cursor-pointer flex justify-between relative bg-electric_indigo-500 text-white px-2 py-1 m-3 rounded shadow hover:shadow-2xl">
+      <div className=" cursor-pointer flex justify-between relative bg-electric_indigo-500 text-white px-2 py-1 m-3 rounded shadow hover:shadow-2xl" id={file_id}  ref={card} name={file_name}>
         <div className="grid gap-1 m-2 w-3/4">
           <h2 className="font-bold text-2xl">
-            <a href="#">
+            <Link to={`/editor/1/${user_name}/${file_name}/${file_id}`}>
               {file_name}
               <kbd>.html</kbd>
-            </a>
+            </Link>
           </h2>
-          <h6 className="text-xs font-extrabold tracking-widest text-gray-300">
-            <a href="">{user_name}</a>
+
+          <h6 className="text-xs font-extrabold tracking-widest text-gray-300"><br />
+            Created at: {created_at} <br /> <br />
+            <Link to="">{user_name}</Link>
           </h6>
           <p className="text-gray-100 text-justify">
           {des}
@@ -63,13 +93,13 @@ function Card(props) {
           }`}
         >
           <div className="grid gap-5 ">
-            <div className="flex gap-3 hover:bg-gray-100 p-2">
-              <LucideView /> Live Deploy
+            <div className="flex gap-3 hover:bg-gray-100 p-2" onClick={livedeploy}>
+              <LucideView /> {pub?'Public Again':'Live Deploy'}
             </div>
-            <div className="flex gap-3  hover:bg-gray-100 p-2">
+            <div className="flex gap-3  hover:bg-gray-100 p-2" onClick={communitycode}>
               <PersonStanding /> Community
             </div>
-            <div className="flex gap-3  hover:bg-gray-100 p-2">
+            <div className="flex gap-3  hover:bg-gray-100 p-2" onClick={deletecode}>
               <Delete /> Delete
             </div>
           </div>

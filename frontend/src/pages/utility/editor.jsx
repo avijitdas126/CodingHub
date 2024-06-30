@@ -1,4 +1,4 @@
-import {React,useState}  from 'react'
+import React,{useState}  from 'react'
 import AceEditor from 'react-ace';
 import 'ace-builds/src-noconflict/mode-html';
 import 'ace-builds/src-noconflict/mode-css';
@@ -31,9 +31,8 @@ function Editorjs(props) {
           tabSize: 2,
         }}
       />
-    
     </>
   )
 }
 
-export default Editorjs
+export default React.memo(Editorjs)

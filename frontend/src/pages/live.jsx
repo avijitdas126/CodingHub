@@ -4,10 +4,10 @@ import data from "/src/pages/utility/details.json";
 import Card from './utility/card';
 import { Plus } from 'lucide-react';
 import { NavLink } from "react-router-dom";
-const Community = () => {
+function Live() {
   return (
     <>
-       <div className='flex w-full'>
+     <div className='flex w-full'>
 
     
 <Nav
@@ -55,8 +55,10 @@ const Community = () => {
 </div>
 </div>
 </div>
+    
     </>
+    // <div>Live</div>
   )
 }
 
-export default Community
+export default Live

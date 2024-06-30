@@ -9,7 +9,7 @@ function Signup() {
 <div className='md:w-1/2'>
   <img src="signup.avif" alt="signup" className='w-[80%] mx-auto hidden md:block' />
 </div>
-<Formjs title="SignUp" component={data[0].signup} type='signup' />
+<Formjs title="Signup" component={data[0].signup} type='signup' />
     </div>
 
     </>

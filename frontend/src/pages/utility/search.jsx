@@ -28,12 +28,13 @@ function Search({ searchIconColor, suggested_list, pass }) {
       )
     );
   };
+  console.log(suggested_list)
   const suggestion = useMemo(() => {
     return suggested_list.filter((elem) => {
+      console.log(elem)
       return elem.toLowerCase().includes(target.toLowerCase());
     });
   }, [target]);
-
   useEffect(() => {
     if (suggestion.length != 0) {
       setload(false);
@@ -69,7 +70,7 @@ function Search({ searchIconColor, suggested_list, pass }) {
             suggestion.length != 0 || load || error ? "block" : "hidden"
           } max-h-[150px] overflow-y-auto scroll-smooth z-50 grid gap-2 list-none bg-white text-black absolute top-[3.3rem] left-2 shadow-md p-2 `}
         >
-          {load && <Loader className="animate-spin" />}
+          {load && <Loader className="animate-spin" />} 
           {error && "No results for ->" + target}
           {suggestion.map((elem, index) => {
             return (

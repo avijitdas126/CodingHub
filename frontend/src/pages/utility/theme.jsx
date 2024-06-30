@@ -1,6 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useRef } from "react";
 import AceEditor from "react-ace";
+import Cookies from "js-cookie";
 import { Code, Braces, FileJson2, Play, Save, Settings, Upload } from "lucide-react";
+import { ToastContainer, toast } from 'react-toastify';
+
+import 'ace-builds/src-noconflict/mode-html';
+import 'ace-builds/src-noconflict/mode-css';
+import 'ace-builds/src-noconflict/mode-javascript';
 // Import Ace Editor themes
 import "ace-builds/src-noconflict/theme-monokai";
 import "ace-builds/src-noconflict/theme-github";
@@ -38,6 +44,7 @@ import "ace-builds/src-noconflict/mode-python";
 import Editorjs from "./editor";
 import Result from "./result";
 import Console from "./console";
+import { Link } from "react-router-dom";
 // ...other modes
 
 const themes = [
@@ -73,31 +80,53 @@ const themes = [
 ];
 let fonts = [14, 15, 16, 17, 18, 20, 24];
 function Theme(props) {
-  let {file, file_id, profile_name, client_id, Html, Css, Js,readonly}=props
+  let {file, file_id, profile_name, client_id, Html, Css, Js, readonly} = props;
   const [theme, setTheme] = useState("");
   const [font, setfont] = useState('');
-
   const [show, setshow] = useState("html");
-  const [html, sethtml] = useState("<h1>Hello World</h1>\n<p>Hello</p>");
-  const [css, setcss] = useState("*{margin:0;}");
-  const [js, setjs] = useState("console.log('Hello World!')");
-  const [simplecode, setsimplecode] = useState(
-    "<h1>Hello World</h1>\n<p>Hello</p>"
-  );
-  const [upload, setupload] = useState(false)
+  const [html, setHtml] = useState(Html);
+  const [css, setCss] = useState(Css);
+  const [js, setJs] = useState(Js);
+  const [simplecode, setsimplecode] = useState(Html);
+  const [upload, setupload] = useState(false);
   const [active, setactive] = useState(true);
   const [data, setdata] = useState("");
   const handleChange = (data) => {
-    //  console.log(data)
     let { code, type } = data;
     handle(type, code);
     if (type.includes("html")) {
-      sethtml(code);
+      setHtml(code);
     } else if (type.includes("css")) {
-      setcss(code);
+      setCss(code);
     } else {
-      setjs(code);
+      setJs(code);
     }
+  };
+  const saveCode = () => {
+    let payload = { token: Cookies.get('token'), code_id: file_id, html:html, css:css, js:js };
+    console.log(payload)
+    let play = async () => {
+      try {
+        let fetch_data = await fetch('http://localhost:9000/user/code/savecode', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(payload),
+        });
+        let res = await fetch_data.json();
+        let { msg, code } = res;
+        if (Number(code) == 200) {
+          toast.success(msg);
+        } else {
+          toast.error(msg);
+        }
+      } catch (error) {
+        toast.error('Something went wrong!');
+      }
+    };
+    play();
+    console.log(payload);
   };
   const handleThemeChange = (event) => {
     setTheme(event.target.value);
@@ -151,22 +180,26 @@ setupload(!upload)
   return (
     <div>
       <div className="flex justify-between bg-indigo-700 text-white fixed z-50 w-full top-0">
+      
         <div className="grid gap-2 m-2">
           <h2 className="font-bold">
-            <a href="#">{file}</a>
+            <Link to="">{file}<kbd>.html</kbd></Link>
           </h2>
           <h6 className="text-xs">
-            <a href="">{profile_name}</a>
+            <Link to="">{profile_name}</Link>
           </h6>
         </div>
         <div className="flex flex-wrap items-center">
-        
-          <button className="btn">
+        <ToastContainer />
+          <button className="btn" onClick={saveCode}>
             <Save /> Save
           </button>
           <button className="btn" onClick={uploadmodal}>
             <Upload /> Upload
           </button>
+          <div>
+            
+          </div>
           <button className="btn">
             <Play />
             Run
@@ -252,48 +285,49 @@ setupload(!upload)
           </button>
         </div>
       </div>
-      {/* {`container ${isActive ? 'active' : ''}`} */}
-      {/* {`flex gap-10 m-2 ${active?"hidden":"block"}`} */}
+      <div className="flex gap-5 bg-gray-600 p-3">         
+          <>
+            <Editorjs
+              font={font}
+              readonly={readonly}
+              code={simplecode}
+              handle={handleChange}
+              type={show}
+              theme={theme}
+              class1={`block lg:hidden h-[400px]`}
+            />
+            <Editorjs
+              font={font}
+              code={html}
+              type="html"
+              readonly={readonly}
+              theme={theme}
+              handle={handleChange}
+              class1="hidden lg:block"
+            />
+            <Editorjs
+              font={font}
+              code={css}
+              type="css"
+              theme={theme}
+              readonly={readonly}
+              handle={handleChange}
+              className="w-[100%]"
+              bool="true"
+              class1="hidden lg:block"
+            />
+            <Editorjs
+              font={font}
+              code={js}
+              type="javascript"
+              readonly={readonly}
+              handle={handleChange}
+              theme={theme}
+              class1="hidden lg:block"
+            />
+          </>
+       
 
-      <div className="flex gap-5 bg-gray-600 p-3">
-        <Editorjs
-          font={font}
-          readonly={readonly}
-          code={simplecode}
-          handle={handleChange}
-          type={show}
-          theme={theme}
-          class1={`block lg:hidden h-[400px]`}
-        />
-        <Editorjs
-          font={font}
-          code={html}
-          type="html"
-          readonly={readonly}
-          theme={theme}
-          handle={handleChange}
-          class1="hidden lg:block"
-        />
-        <Editorjs
-          font={font}
-          code={css}
-          type="css"
-          theme={theme}
-          readonly={readonly}
-          handle={handleChange}
-          className="w-[100%]"
-          bool="true"
-          class1="hidden lg:block"
-        />
-        <Editorjs
-          font={font}
-          code={js}
-          type="javascript"
-          readonly={readonly}
-          handle={handleChange}
-          theme={theme}
-          class1="hidden lg:block"
-        />
       </div>
 
       <Result html={html} css={css} js={js} />
@@ -301,4 +335,4 @@ setupload(!upload)
   );
 }
 
-export default React.memo(Theme);
+export default Theme;

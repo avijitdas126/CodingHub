@@ -8,7 +8,7 @@ import Upload from "./pages/utility/uploads";
 import Nav from "./pages/utility/nav";
 import data from "/src/pages/utility/details.json";
 import Dashboard from "./pages/dashboard";
-import Route from "./route";
+import PublicRoute from "./public_route";
 export default function App() {
   let color = "#000000";
   return (
@@ -35,7 +35,7 @@ export default function App() {
         }
       /> */}
 {/* <Dashboard /> */}
-<Route />
+<PublicRoute />
     </>
   );
 }

@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import Search from "./search";
 import { MenuIcon, X } from "lucide-react";
+import { NavLink ,Link} from "react-router-dom";
 
 
-let suggest=['avijit','roy','sunil','das']
+// let suggest=['avijit','roy','sunil','das']
 function Nav(props) {
   const {
+    className,
     parallel,
     data,
     logo,
@@ -19,37 +21,39 @@ function Nav(props) {
     user,
     half,
     user_img,
+    suggest
   } = props;
   const [close, setclose] = useState(false);
-const [api, setapi] = useState([])
+const [api,setapi]=useState([])
+
   const handle = () => {
     setclose(!close);
   };
-useEffect(() => {
-    // fetch('https://dummyjson.com/products/?limit=190')
-    // .then(res => res.json())
-    // .then(json => {
-    //     const titles = json.products.map((elem) => elem.title);
-    //     setapi(titles);
-    //   });
-}, [])
-console.log(api)
+  
+  useEffect(() => {
+    if (suggest) {
+      const updatedApi = suggest.map((elem) => elem.file_name.split('.')[0]);
+      setapi(updatedApi);
+    }
+  }, [suggest]);
+
+
   return (
     <>
       {/* <Search /> */}
 {/* {console.log(data)} */}
       <div
-        className={`${half ?'w-[84.4vw]':' '}${
+        className={`${
           parallel
-            ? " flex w-full  bg-[#1A2130] bg-[" +
+            ? " flex    bg-[#1A2130] bg-[" +
               color +
               "] text-white text-[" +
               textColor +
-              "] items-center justify-between fixed z-50"
+              "] items-center justify-between fixed z-50 "
             : "grid h-[100vh]  bg-black w-1/6 bg-black text-white text-[" +
               textColor +
-              "] lg:items-center shadow p-2 justify-center"
-        }`}
+              "] lg:items-center shadow p-2 justify-center "
+        }${ className}`}
         style={{background:{color}}}
       >
         {user && (
@@ -65,26 +69,26 @@ console.log(api)
         )}
         {logo && (
           <div className="  logo p-2">
-            <a href="/">
+            <Link to="/">
               <img src="/icons8-code-64.png" alt="logo" />
-            </a>
+            </Link>
           </div>
         )}
-
+{console.log(api)}
         <div className="hidden lg:block">
           <nav>
             <ul
               className={`${
                 parallel ? "flex" : "grid"
               } gap-4   bg-[${color}] text-white text-[${textColor}] p-2  ${
-                parallel ? "w-full" : "lg:w-1/5"
-              } w-1/4 `}
+                parallel ? "w-full" : " "
+              }  `}
               style={{ background: "#00000" }}
             >
               {props.data.map((elem, index) => {
                 return (
                   <li key={index} className="p-2 hover:bg-slate-600 rounded">
-                    <a href={elem.route}>{elem.item}</a>
+                      <NavLink to={elem.route} >{elem.item}</NavLink>
                   </li>
                 );
               })}
@@ -93,16 +97,18 @@ console.log(api)
         </div>
         <div className={` flex gap-2  ${parallel ? 'items-center':'lg:items-center'}  relative`}>
             {/* suggest ->api */}
-          {search && <Search searchIconColor={searchIconColor} suggested_list={suggest} />}
+          {search && <Search searchIconColor={searchIconColor} suggested_list={api} />}
           {profile && (
             <div>
-              <a href={profile_url}>
+              <Link to={profile_url}>
                 <img
+                width={32}
+                height={50}
                   src={profile_img}
                   alt="profile"
                   className="rounded-full m-2"
                 />
-              </a>
+              </Link>
             </div>
           )}
           {/* {data.length!=0 &&( */}
@@ -136,7 +142,7 @@ console.log(api)
              key={index}
              className="p-2 hover:bg-slate-600 rounded"
            >
-             <a href={elem.route}>{elem.item}</a>
+             <NavLink to={elem.route} >{elem.item}</NavLink>
            </li>
          );
        })}
