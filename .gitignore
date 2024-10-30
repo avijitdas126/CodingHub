@@ -8,17 +8,7 @@ plan.drawio
 
 # front end
 
-/frontend/.gitignore
-
-/frontend/.eslintrc.cjs
-
 /frontend/App.jsx
-
-/frontend/postcss.config.js
-
-/frontend/tailwind.config.js
-
-/frontend/vite.config.js
 
 # Extra
 
