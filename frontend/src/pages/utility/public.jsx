@@ -22,7 +22,7 @@ const Public = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://codinghub-5gt0.onrender.com/user/live/community/showcode",
+          "import.meta.env.SERVER/user/live/community/showcode",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -96,7 +96,7 @@ const Public = () => {
       try {
         if (data.title.length && data.description.length && data.tags.length) {
           let res = await fetch(
-            "https://codinghub-5gt0.onrender.com/user/live/community/post",
+            "import.meta.env.SERVER/user/live/community/post",
             {
               method: "POST",
               headers: {
@@ -131,7 +131,7 @@ const Public = () => {
       try {
         if (data.title.length && data.description.length && data.tags.length) {
           let res = await fetch(
-            "https://codinghub-5gt0.onrender.com/user/live/community/edit",
+            "import.meta.env.SERVER/user/live/community/edit",
             {
               method: "POST",
               headers: {

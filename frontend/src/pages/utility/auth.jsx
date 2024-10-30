@@ -25,7 +25,7 @@ const verifyToken=(token)=>{
 console.log('call')
 let payload={token}
 // console.log(payload)
-fetch('https://codinghub-5gt0.onrender.com/user/check_token',
+fetch('import.meta.env.SERVER/user/check_token',
   {
     method: 'POST',
     headers: {

@@ -33,7 +33,7 @@ const Webid = () => {
     }
     const play = async () => {
       try {
-        let res = await fetch("https://codinghub-5gt0.onrender.com/user/live/public", {
+        let res = await fetch("import.meta.env.SERVER/user/live/public", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -61,7 +61,7 @@ const Webid = () => {
     let data = { token: Cookies.get("token"), userid: Cookies.get("userid") };
     let play = async () => {
       try {
-        let fetch_data = await fetch("https://codinghub-5gt0.onrender.com/user/get_user", {
+        let fetch_data = await fetch("import.meta.env.SERVER/user/get_user", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
