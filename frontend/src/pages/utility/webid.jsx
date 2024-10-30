@@ -87,8 +87,13 @@ const Webid = () => {
   const [value, setvalue] = useState("");
   return (
     <>
-      <div className="text-white bg-electric_indigo-600 m-10">
-        <form action="">
+      <center>
+        <h1 className="font-bold text-3xl py-5 hover:bg-raisin_black-300 hover:text-white w-[60%] mt-5 rounded hover:shadow ">
+          Do you want to deploy this file?
+        </h1>
+      </center>
+      <div className=" text-white bg-electric_indigo-600 m-10">
+        <form action="" className="pt-10 grid gap-5">
           <Component
             type="text"
             key={1}

@@ -29,7 +29,7 @@
 {
     "key":"1",
    "type":"email",
-   "label":"Email",
+   "label":"Email Id",
    "name":"email",
    "placeholder":"Enter your Email",
    "required":true ,
@@ -86,16 +86,13 @@
     },
     {
         "item":"Assets",
-        "route":"/"
+        "route":"/asserts"
     },
     {
         "item":"Profile",
-        "route":"/"
-    },
-    {
-        "item":"Logout",
-        "route":"/"
+        "route":"/profile"
     }
+ 
 
    ]
 }

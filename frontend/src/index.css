@@ -16,7 +16,7 @@
     @apply  p-2 rounded m-2 hover:bg-gray-500 hover:text-white text-center flex justify-around gap-2 h-10
 }
 .btnactive{
-@apply bg-gray-500 text-white
+@apply bg-gray-200  text-black
 }
 .logs{
     @apply -translate-y-[2.3rem]
@@ -33,4 +33,28 @@
 .blur{
     filter: blur(4px);
 }
+.active_nav{
+    @apply border-x-electric_indigo-900 border-solid border-b-2 p-2 bg-[#0000002d]
+}
+/* Parent container ensuring no overflow */
+.result-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Prevents scrollbars */
+    background: #f9f9f9; /* Optional background for better visibility */
+    border-radius: 8px; /* Optional rounded corners */
+    position: relative;
+  }
+  
+  /* Ensures that internal iframe or content takes the full space without overflow */
+  .result-container iframe, 
+  .result-container > div {
+    width: 100%;
+    height: 100%;
+    border: none; /* Removes any unwanted border */
+    overflow: hidden; /* No scrollbars */
+    display: block;
+  }
+  
+  
 }
