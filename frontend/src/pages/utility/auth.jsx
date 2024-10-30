@@ -25,7 +25,7 @@ const verifyToken=(token)=>{
 console.log('call')
 let payload={token}
 // console.log(payload)
-fetch('http://localhost:9000/user/check_token',
+fetch('https://codinghub-5gt0.onrender.com/user/check_token',
   {
     method: 'POST',
     headers: {

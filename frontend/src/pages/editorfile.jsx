@@ -24,7 +24,7 @@ const EditorFile = () => {
     const fetchCode = async () => {
       try {
         const response = await fetch(
-          "http://localhost:9000/user/code/showcode",
+          "https://codinghub-5gt0.onrender.com/user/code/showcode",
           {
             method: "POST",
             headers: {

@@ -30,7 +30,7 @@ setTimeout(()=>{
     try {
       let token=Cookies.get('token')
       if(!token) throw new Error('Please login');
-      const response = await fetch('http://localhost:9000/user/assert/delete',{
+      const response = await fetch('https://codinghub-5gt0.onrender.com/user/assert/delete',{
         method: "POST",
         headers: {
           "Content-Type": "application/json",

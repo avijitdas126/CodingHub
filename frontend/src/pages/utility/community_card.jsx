@@ -54,7 +54,7 @@ export const Community_card = ({ data, isown = false }) => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "http://localhost:9000/user/live/community/showcode",
+          "https://codinghub-5gt0.onrender.com/user/live/community/showcode",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -82,7 +82,7 @@ export const Community_card = ({ data, isown = false }) => {
 
     let play = async () => {
       try {
-        let fetch_data = await fetch("http://localhost:9000/user/comment/", {
+        let fetch_data = await fetch("https://codinghub-5gt0.onrender.com/user/comment/", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -107,7 +107,7 @@ export const Community_card = ({ data, isown = false }) => {
       let data = { token: Cookies.get("token"), follower_id: userid };
       let play = async () => {
         try {
-          let fetch_data = await fetch("http://localhost:9000/user/follow/", {
+          let fetch_data = await fetch("https://codinghub-5gt0.onrender.com/user/follow/", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -136,7 +136,7 @@ export const Community_card = ({ data, isown = false }) => {
     let play = async () => {
       try {
         let fetch_data = await fetch(
-          "http://localhost:9000/user/comment/post",
+          "https://codinghub-5gt0.onrender.com/user/comment/post",
           {
             method: "POST",
             headers: {
@@ -163,7 +163,7 @@ export const Community_card = ({ data, isown = false }) => {
 
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:9000/user/favarite", {
+        const response = await fetch("https://codinghub-5gt0.onrender.com/user/favarite", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ token, community_id }),
@@ -248,7 +248,7 @@ export const Community_card = ({ data, isown = false }) => {
                       };
                       try {
                         let fetch_data = await fetch(
-                          "http://localhost:9000/user/code/deletecode",
+                          "https://codinghub-5gt0.onrender.com/user/code/deletecode",
                           {
                             method: "POST",
                             headers: {

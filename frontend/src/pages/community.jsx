@@ -31,7 +31,7 @@ const Community = () => {
     let data = { token: Cookies.get("token"), userid: Cookies.get("userid") };
     let play = async () => {
       try {
-        let fetch_data = await fetch("http://localhost:9000/user/get_user", {
+        let fetch_data = await fetch("https://codinghub-5gt0.onrender.com/user/get_user", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -57,7 +57,7 @@ const Community = () => {
     let play1 = async () => {
       try {
         let fetch_data = await fetch(
-          "http://localhost:9000/user/live/community/all",
+          "https://codinghub-5gt0.onrender.com/user/live/community/all",
           {
             method: "POST",
             headers: {
@@ -90,7 +90,7 @@ const Community = () => {
     let play1 = async () => {
       try {
         let fetch_data = await fetch(
-          "http://localhost:9000/user/live/community/popular",
+          "https://codinghub-5gt0.onrender.com/user/live/community/popular",
           {
             method: "POST",
             headers: {
@@ -114,7 +114,7 @@ const Community = () => {
     let play1 = async () => {
       try {
         let fetch_data = await fetch(
-          "http://localhost:9000/user/live/community/recent",
+          "https://codinghub-5gt0.onrender.com/user/live/community/recent",
           {
             method: "POST",
             headers: {

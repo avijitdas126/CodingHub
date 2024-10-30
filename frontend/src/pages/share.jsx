@@ -16,7 +16,7 @@ const Share = () => {
   const [isLogin, setisLogin] = useState(false)
   let play = async (token) => {
       try {
-        let fetch_data = await fetch("http://localhost:9000/user/check_token", {
+        let fetch_data = await fetch("https://codinghub-5gt0.onrender.com/user/check_token", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -45,7 +45,7 @@ const Share = () => {
       
       let play = async () => {
         try {
-          let fetch_data = await fetch("http://localhost:9000/user/share/"+id, {
+          let fetch_data = await fetch("https://codinghub-5gt0.onrender.com/user/share/"+id, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

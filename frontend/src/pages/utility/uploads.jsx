@@ -99,7 +99,7 @@ function Uploads(props) {
     if (!token) navigator("/login");
     try {
       const response = await fetch(
-        "http://localhost:9000/user/assert/uploads",
+        "https://codinghub-5gt0.onrender.com/user/assert/uploads",
         {
           method: "POST",
           headers: {
@@ -131,7 +131,7 @@ function Uploads(props) {
       try {
         let token = Cookies.get("token");
         if (!token) navigator("/login");
-        const response = await fetch("http://localhost:9000/user/assert", {
+        const response = await fetch("https://codinghub-5gt0.onrender.com/user/assert", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
