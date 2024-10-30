@@ -41,9 +41,9 @@ function Formjs(props) {
     console.log(submit)
     if (submit) {
       const url = type.includes("signup")
-        ? "http://localhost:9000/user/signup"
+        ? "https://codinghub-5gt0.onrender.com/user/signup"
         : type.includes("login")
-        ? "http://localhost:9000/user/login"
+        ? "https://codinghub-5gt0.onrender.com/user/login"
         : "";
       if (data["token"] == undefined) {
         setdata((prevData) => ({

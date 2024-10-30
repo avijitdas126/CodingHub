@@ -25,7 +25,7 @@ function Live() {
     let data = { token: Cookies.get("token"), userid: Cookies.get("userid") };
     let play = async () => {
       try {
-        let fetch_data = await fetch("http://localhost:9000/user/get_user", {
+        let fetch_data = await fetch("https://codinghub-5gt0.onrender.com/user/get_user", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -56,7 +56,7 @@ function Live() {
     };
     const play = async () => {
       try {
-        let res = await fetch("http://localhost:9000/user/code/deletecode", {
+        let res = await fetch("https://codinghub-5gt0.onrender.com/user/code/deletecode", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

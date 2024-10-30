@@ -19,7 +19,7 @@ const Share_community = () => {
   let navi = useNavigate();
   let play = async (token) => {
     try {
-      let fetch_data = await fetch("http://localhost:9000/user/check_token", {
+      let fetch_data = await fetch("https://codinghub-5gt0.onrender.com/user/check_token", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -48,7 +48,7 @@ const Share_community = () => {
     let play = async () => {
       try {
         let fetch_data = await fetch(
-          "http://localhost:9000/user/live/community/showcode",
+          "https://codinghub-5gt0.onrender.com/user/live/community/showcode",
           {
             method: "POST",
             headers: {
