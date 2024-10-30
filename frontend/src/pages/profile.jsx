@@ -38,7 +38,7 @@ export const Profile = () => {
     e.preventDefault();
     let image = upload.current.files[0];
     const updateUserProfile = async (data) => {
-      const url = "https://codinghub-5gt0.onrender.com/user/edit";
+      const url = `${import.meta.env.SERVER}/user/edit`;
       try {
         let fetch_data = await fetch(url, {
           method: "POST",
@@ -138,7 +138,7 @@ export const Profile = () => {
     let data = { token: Cookies.get("token"), userid: userid };
     let play = async () => {
       try {
-        let fetch_data = await fetch("https://codinghub-5gt0.onrender.com/user/get_user", {
+        let fetch_data = await fetch(`${import.meta.env.SERVER}/user/get_user`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -187,7 +187,7 @@ export const Profile = () => {
       let data = { token: Cookies.get("token"), follower_id: userid };
       let play = async () => {
         try {
-          let fetch_data = await fetch("https://codinghub-5gt0.onrender.com/user/follow/", {
+          let fetch_data = await fetch(`${import.meta.env.SERVER}/user/follow/`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

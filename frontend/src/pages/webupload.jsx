@@ -18,7 +18,7 @@ function Webupload() {
     let data = { token: Cookies.get("token"), userid: Cookies.get("userid") };
     let play = async () => {
       try {
-        let fetch_data = await fetch("https://codinghub-5gt0.onrender.com/user/get_user", {
+        let fetch_data = await fetch(`${import.meta.env.SERVER}/user/get_user`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
