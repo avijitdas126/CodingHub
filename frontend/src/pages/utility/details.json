@@ -1,0 +1,117 @@
+[{"signup":[
+{
+    "key":"1",
+   "type":"text",
+   "label":"Full Name",
+   "name":"name",
+   "placeholder":"Enter your Name",
+   "required":true ,
+   "display":true
+},
+{
+    "key":"1",
+   "type":"text",
+   "label":" User Name",
+   "name":"client_id",
+   "placeholder":"Enter your Name",
+   "required":true ,
+   "display":true
+},
+{
+    "key":"1",
+   "type":"file",
+   "label":"Choose Profile",
+   "name":"avatar_url",
+   "placeholder":"Upload Your Profile Picture",
+   "required":false,
+   "display":false
+},
+{
+    "key":"1",
+   "type":"email",
+   "label":"Email",
+   "name":"email",
+   "placeholder":"Enter your Email",
+   "required":true ,
+   "display":true
+},
+{
+    "key":"1",
+   "type":"password",
+   "label":"Password ",
+   "name":"password",
+   "placeholder":"Enter your Password",
+   "required":true ,
+   "display":true
+}]},
+{
+    "login":[
+        {
+            "key":"1",
+           "type":"text",
+           "label":"User Name",
+           "name":"client_id",
+           "placeholder":"Enter your Name",
+           "required":true ,
+           "display":true
+        },
+        {
+            "key":"1",
+           "type":"password",
+           "label":"Password ",
+           "name":"password",
+           "placeholder":"Enter your Password",
+           "required":true ,
+           "display":true
+        } 
+    
+    ]
+
+
+},
+{
+   "dashboard":[
+    {
+        
+        "item":"Recent",
+        "route":"/dashboard"
+    },
+    {
+        "item":"Live Project" ,
+        "route":"/live"
+    },
+    {
+        "item":"Community",
+        "route":"/community"
+    },
+    {
+        "item":"Assets",
+        "route":"/"
+    },
+    {
+        "item":"Profile",
+        "route":"/"
+    },
+    {
+        "item":"Logout",
+        "route":"/"
+    }
+
+   ]
+}
+,
+{
+    "webid":[
+        {
+            "key":"1",
+           "type":"text",
+           "label":"Unique Id:",
+           "name":"webid",
+           "placeholder":"Enter an Unique Id for Public this file",
+           "required":true ,
+           "display":true
+        }
+    ]
+}
+
+]

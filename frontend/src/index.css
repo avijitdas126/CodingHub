@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+.buttn{
+    @apply bg-gray-600 flex justify-around hover:bg-gray-700  p-3  w-[80px] text-white font-bold text-center rounded cursor-pointer  ;
+}
+.active{
+    @apply hover:bg-gray-700 bg-gray-700 p-2
+}
+.btn{
+    @apply bg-green-600 text-white p-2 rounded m-2 hover:bg-green-700 text-center flex justify-around gap-2 h-10
+}
+.btn1{
+    @apply  p-2 rounded m-2 hover:bg-gray-500 hover:text-white text-center flex justify-around gap-2 h-10
+}
+.btnactive{
+@apply bg-gray-500 text-white
+}
+.logs{
+    @apply -translate-y-[2.3rem]
+}
+.log{
+    @apply -translate-y-5
+}
+.like{
+    @apply bg-white text-black p-1 rounded
+}
+.box{
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.blur{
+    filter: blur(4px);
+}
+}
