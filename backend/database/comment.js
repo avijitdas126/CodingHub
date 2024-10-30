@@ -38,6 +38,12 @@ let comment = new mongoose.Schema({
   mention_id:{
     type:String ,
   },
+  avatar_url:{
+    type:String ,
+  },
+  name:{
+    type:String ,
+  },
 });
 let Comment = new mongoose.model("Comment",comment);
 

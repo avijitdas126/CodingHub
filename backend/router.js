@@ -24,7 +24,9 @@ const favarite=require('./controller/code/favarite')
 //--------------------------------------------------------------
 const update_User=require('./controller/userProfile/user_details')
 const follow=require('./controller/userProfile/follow')
-
+//-----------------------------------------------------------------
+const assert=require('./controller/code/assert')
+const share=require('./controller/code/share')
 /*---Express Router---*/
 app.use('/signup/get',get_all_users)
 app.use('/get_user',get_user)
@@ -44,4 +46,6 @@ app.use('/comment',comment)
 app.use('/favarite',favarite)
 app.use('/follow',follow)
 app.use('/edit',update_User)
+app.use('/assert',assert)
+app.use('/share',share)
 module.exports=app

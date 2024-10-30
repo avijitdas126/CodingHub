@@ -5,7 +5,7 @@ const { encode } = require('html-entities');
 const codeDetail=require('../../database/code_details')
 const { v4: uuidv4 } = require("uuid");
 const moment = require('moment');
-const { Code, Codehtml, Codecss, Codejs } = require("../../database/code");
+const { Code, Codecss, Codejs } = require("../../database/code");
 const save_code = express.Router();
 /**
  * req:{token,code_id,html,css,js}
@@ -31,6 +31,7 @@ save_code.post("/", (req, res) => {
                     css
                 }
             })
+
             console.log(dat5);
                   }
                   else{
@@ -71,6 +72,7 @@ save_code.post("/", (req, res) => {
                       })
                       let save2=await html1.save()
                   }
+                  res.status(200)
                   res.send({
                     msg:"Code saved successfully",
                     code:200

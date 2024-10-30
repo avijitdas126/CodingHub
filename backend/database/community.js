@@ -33,7 +33,6 @@ no_of_comments:
     },
     description:{
       type: String,
-      required: true,
     },
     created:{
       type: String,

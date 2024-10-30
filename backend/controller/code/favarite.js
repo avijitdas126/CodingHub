@@ -21,6 +21,7 @@ const play=async()=>{
             }
         })
 console.log(save);
+res.status(200)
 res.send({
     msg:"Like added successfully",
     code:200

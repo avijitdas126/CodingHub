@@ -39,8 +39,13 @@ let code_detail = new mongoose.Schema({
     type: String,
   },
   community_id: {
+    default:null,
     type: String,
   },
+  recent_delete:{
+    type:Boolean,
+    default:false
+  }
 });
 
 let codeDetail = new mongoose.model("Code_detail", code_detail);

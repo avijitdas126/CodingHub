@@ -14,7 +14,9 @@ require('dotenv').config()
 let router=require('./router.js')
 
 /* Middleware */
-app.use(cors())
+app.use(cors({
+    origin:'*'
+}))
 
 app.use(express.json())
 
@@ -42,7 +44,7 @@ app.use((err,req,res,next)=>{
 
     if(err.message){
 
-        res.status(500);
+        res.status(404);
 
         res.send({
 

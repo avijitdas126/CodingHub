@@ -1,0 +1,62 @@
+1>
+Access Key: U-g4CrBF8nhMcPMg_NCVpWb2eohDDiAz_UKsgKrZ3E4
+Secret key: thGgnz-JRPj1T92UdE4uS8cqLJEJE_oOrKkC2limHH4
+
+
+data
+: 
+delete_url
+: 
+"https://ibb.co/3SGBJgP/d7982d8bd2550a01487001d505848e2a"
+display_url
+: 
+"https://i.ibb.co/6DVgdjq/Screenshot-526.png"
+expiration
+: 
+0
+height
+: 
+468
+id
+: 
+"3SGBJgP"
+image
+: 
+{filename: 'Screenshot-526.png', name: 'Screenshot-526', mime: 'image/png', extension: 'png', url: 'https://i.ibb.co/5stB7bJ/Screenshot-526.png'}
+medium
+: 
+{filename: 'Screenshot-526.png', name: 'Screenshot-526', mime: 'image/png', extension: 'png', url: 'https://i.ibb.co/6DVgdjq/Screenshot-526.png'}
+size
+: 
+20347
+thumb
+: 
+{filename: 'Screenshot-526.png', name: 'Screenshot-526', mime: 'image/png', extension: 'png', url: 'https://i.ibb.co/3SGBJgP/Screenshot-526.png'}
+time
+: 
+1727368244
+title
+: 
+"Screenshot-526"
+url
+: 
+"https://i.ibb.co/5stB7bJ/Screenshot-526.png"
+url_viewer
+: 
+"https://ibb.co/3SGBJgP"
+width
+: 
+689
+[[Prototype]]
+: 
+Object
+status
+: 
+200
+success
+: 
+true
+
+https://i.ibb.co/3RDbRJ6/Screenshot-526.png
+https://i.ibb.co/DVbY9Pp/Screenshot-505.png
+https://i.ibb.co/5stB7bJ/Screenshot-526.png

@@ -52,6 +52,7 @@ let csd=await codeDetail.updateOne({code_id},{
     }
 })
 console.log(csd);
+res.status(200)
 res.send({
     code:200,msg:"public successfully",
     public_url:url

@@ -7,6 +7,7 @@ let client_id=req.params.client_id;
 let play=async()=>{
     try {
         let data=await User.find({client_id})
+        res.status(200)
         res.send(data)
     } catch (error) {
         res.status(404)

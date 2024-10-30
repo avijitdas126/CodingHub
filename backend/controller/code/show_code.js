@@ -29,9 +29,11 @@ html:decode(encodedHtml),
 css:res21[0].css,
 js:res22[0].js
 }
+res.status(200)
 res.send(data)
         }
         else{
+            res.status(200)
             res.send({
                 html:"",
                 css:"",

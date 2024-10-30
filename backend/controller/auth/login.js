@@ -93,7 +93,7 @@ let play= async()=>{
                         token
                     }
                 })
-                //console.log(res2);
+                res.status(200)
                     res.send({token,userid,msg:"Updated Successfully",code:200})
                   }
                   else{
