@@ -16,6 +16,7 @@ let data=await Combine_code.find({webid})
 if(data.length!=0){
 let value=data[0].combined_code;
 value=decode(value)
+res.status(200)
 res.send(value)
         }
        else{

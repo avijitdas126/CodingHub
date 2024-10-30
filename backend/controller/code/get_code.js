@@ -13,7 +13,7 @@ get_code.get('/css/:id/:no',(req,res)=>{
          if(codehtml.length!=0){
              if(no<=3 && no!=0){
                  rawhtml=codehtml[no-1].css
-                //  console.log(rawhtml);
+                 res.status(200)
                  res.send(rawhtml)
              
              }

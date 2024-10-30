@@ -24,7 +24,7 @@ let play= async()=>{
             let password1=bcrypt.compareSync(password,result[0].password);
           //console.log(password,result);
           if(password1){
-            res.send({token})
+            res.send({token,msg:'You already login',code:'200'})
           }
           else{
             res.status(404)
@@ -33,6 +33,29 @@ let play= async()=>{
                 code:404
             })
           }
+          }
+          else if(token==undefined){
+            let result=await User.find({client_id})
+            if(result.length!=0){
+                let password1=bcrypt.compareSync(password,result[0].password);
+                if(password1){
+                    res.send({token:result[0].token})
+                  }
+                  else{
+                    res.status(404)
+                    res.send({
+                        msg:"Invaild Password",
+                        code:404
+                    })
+                  }
+            }
+            else{
+                res.status(404)
+                res.send({
+                    msg:"Invaild Credentials",
+                    code:404
+                })
+            }
           }
           else{
             let result=await User.find({client_id})
@@ -70,8 +93,8 @@ let play= async()=>{
                         token
                     }
                 })
-                //console.log(res2);
-                    res.send({token,userid,msg:"Updated Successfully"})
+                res.status(200)
+                    res.send({token,userid,msg:"Updated Successfully",code:200})
                   }
                   else{
                     res.status(404)

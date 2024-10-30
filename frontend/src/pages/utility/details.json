@@ -2,58 +2,113 @@
 {
     "key":"1",
    "type":"text",
-   "label":"Your Full Name",
+   "label":"Full Name",
+   "name":"name",
    "placeholder":"Enter your Name",
-   "required":true 
+   "required":true ,
+   "display":true
 },
 {
     "key":"1",
    "type":"text",
-   "label":"Your User Name",
+   "label":" User Name",
+   "name":"client_id",
    "placeholder":"Enter your Name",
-   "required":true 
+   "required":true ,
+   "display":true
 },
 {
     "key":"1",
    "type":"file",
    "label":"Choose Profile",
+   "name":"avatar_url",
    "placeholder":"Upload Your Profile Picture",
-   "required":false
+   "required":false,
+   "display":false
 },
 {
     "key":"1",
    "type":"email",
-   "label":"Email",
+   "label":"Email Id",
+   "name":"email",
    "placeholder":"Enter your Email",
-   "required":true 
+   "required":true ,
+   "display":true
 },
 {
     "key":"1",
-   "type":"text",
+   "type":"password",
    "label":"Password ",
+   "name":"password",
    "placeholder":"Enter your Password",
-   "required":true 
+   "required":true ,
+   "display":true
 }]},
 {
     "login":[
         {
             "key":"1",
            "type":"text",
-           "label":"Your User Name",
+           "label":"User Name",
+           "name":"client_id",
            "placeholder":"Enter your Name",
-           "required":true 
+           "required":true ,
+           "display":true
         },
         {
             "key":"1",
-           "type":"text",
+           "type":"password",
            "label":"Password ",
+           "name":"password",
            "placeholder":"Enter your Password",
-           "required":true 
+           "required":true ,
+           "display":true
         } 
     
     ]
 
 
+},
+{
+   "dashboard":[
+    {
+        
+        "item":"Recent",
+        "route":"/dashboard"
+    },
+    {
+        "item":"Live Project" ,
+        "route":"/live"
+    },
+    {
+        "item":"Community",
+        "route":"/community"
+    },
+    {
+        "item":"Assets",
+        "route":"/asserts"
+    },
+    {
+        "item":"Profile",
+        "route":"/profile"
+    }
+ 
+
+   ]
+}
+,
+{
+    "webid":[
+        {
+            "key":"1",
+           "type":"text",
+           "label":"Unique Id:",
+           "name":"webid",
+           "placeholder":"Enter an Unique Id for Public this file",
+           "required":true ,
+           "display":true
+        }
+    ]
 }
 
 ]

@@ -11,10 +11,12 @@ check_token.post('/',(req,res)=>{
    let play=async()=>{
 try {
     let data= jwt.verify(token,process.env.secect_key)
+    res.status(200)
     res.send({
-        bool:true
+        bool:data
     })
 } catch (error) {
+    res.status(404)
     res.send({
         bool:false
     })

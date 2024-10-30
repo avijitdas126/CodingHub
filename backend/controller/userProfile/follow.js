@@ -7,6 +7,7 @@ const follow= express.Router();
 
 follow.post("/", (req, res) => {
 let {token,follower_id}=req.body
+console.log(req.body)
 let data=jwt.verify(token,process.env.secect_key);
 const play=async()=>{
     try {
@@ -15,7 +16,7 @@ const play=async()=>{
         let array=res12[0].follows
         let bool=false
         for(let i=0;i<array.length;i++){
-            if(array[i]==follower_id){
+            if(array[i].includes(follower_id)){
                 bool=true
                 break;
             }
@@ -36,6 +37,7 @@ const play=async()=>{
                 })
                
                 console.log(follow,follower);
+                res.status(200)
         res.send({
             msg:"Follow add successfully",
             code:200

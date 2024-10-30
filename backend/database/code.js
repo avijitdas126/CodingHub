@@ -76,9 +76,45 @@ js(decoded),
       type: String,
     }
   });
-
+  let asserts = new mongoose.Schema({
+    url:{
+      type: String,
+      required: true,
+    },
+    client_id:{
+      type: String,
+      required: true,
+    },
+    name:{
+      type: String,
+    },
+    id:{
+      type: String,
+      required: true,
+    }
+  });
+  let share=new mongoose.Schema({
+   id:{
+    type: String,
+    required: true,
+  },
+  code_id:{
+    type: String,
+    required: true,
+  },
+  file_name:{
+    type: String,
+  }
+  ,
+  profile:{
+    type: String,
+  }
+  });
+  
 let Code = new mongoose.model("Code",code);
 let Combine_code = new mongoose.model("Combine_code",combined_code);
 let Codecss = new mongoose.model("Codecss",codecss);
 let Codejs = new mongoose.model("Codejs",codejs);
-module.exports={Code,Combine_code,Codecss,Codejs}
+let Assert = new mongoose.model("Asserts",asserts);
+let Share = new mongoose.model("Share",share);
+module.exports={Code,Combine_code,Codecss,Codejs,Assert,Share}

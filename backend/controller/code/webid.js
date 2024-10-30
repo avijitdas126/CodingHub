@@ -13,6 +13,7 @@ const webid = express.Router();
  */
 webid.post("/", (req, res) => {
     let {token,code_id,webid,bool}=req.body
+    console.log(req.body)
     let data=jwt.verify(token,process.env.secect_key);
 let play=async()=>{
     try {
@@ -51,6 +52,7 @@ let csd=await codeDetail.updateOne({code_id},{
     }
 })
 console.log(csd);
+res.status(200)
 res.send({
     code:200,msg:"public successfully",
     public_url:url
