@@ -13,14 +13,14 @@ Your ultimate space to build, share, and collaborate in real-time. Code with eas
   
   # How to use it
   ```bash
-git clone https://github.com/avijitdas126/CodingHub.git
-cd CodingHub
+   git clone https://github.com/avijitdas126/CodingHub.git
+   cd CodingHub
 
   ```
-  For frontend
+  ## For frontend
   go to [this link](https://github.com/avijitdas126/CodingHub/tree/master/frontend)
-   For backend
+  ## For backend
   go to [this link](https://github.com/avijitdas126/CodingHub/tree/master/backend)
 
-  Live this application on vercel
+  ## Live this application on vercel
   [Click here](https://coding-hub-mauve.vercel.app)
