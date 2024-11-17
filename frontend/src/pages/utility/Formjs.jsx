@@ -85,72 +85,67 @@ function Formjs(props) {
 
   return (
     <>
-      <div className="my-10 md:mx-10 bg-electric_indigo-600 text-white py-10 rounded mx-auto w-[80%] border-violet-900 border-solid border-2 shadow hover:shadow-lg">
-        <h1 className="text-center text-5xl font-bold underline pb-10">
-          {title}
-        </h1>
+     <div className="my-10 px-5 md:px-10 bg-electric_indigo-600 text-white py-10 rounded mx-auto max-w-4xl border-violet-900 border-solid border-2 shadow hover:shadow-lg">
+  <h1 className="text-center text-3xl md:text-5xl font-bold underline pb-6">
+    {title}
+  </h1>
 
-        <form onSubmit={handleSubmit}>
-          {component.map((elem, index) => {
-            return (
-              <Component
-                type={elem.type}
-                key={index}
-                label={elem.label}
-                onChange={handleChange}
-                placeholder={elem.placeholder}
-                name={elem.name}
-                data={data}
-                required={elem.required}
-                display={elem.display}
-              />
-            );
-          })}
+  <form onSubmit={handleSubmit}>
+    <div className="grid gap-6 sm:gap-10 md:gap-12">
+      {component.map((elem, index) => (
+        <Component
+          type={elem.type}
+          key={index}
+          label={elem.label}
+          onChange={handleChange}
+          placeholder={elem.placeholder}
+          name={elem.name}
+          data={data}
+          required={elem.required}
+          display={elem.display}
+        />
+      ))}
+    </div>
 
-          <div className="flex gap-5 justify-center py-5">
-            <button
-              type="reset"
-              className="bg-white px-8 py-2 font-bold hover:shadow-2xl text-black rounded"
-            >
-              Clear
-            </button>
-            <button
-              type="submit"
-              className="bg- px-8 py-2 font-bold hover:shadow-2xl rounded bg-medium_slate_blue-100"
-            >
-              Submit
-            </button>
+    <div className="flex gap-4 justify-center py-6">
+      <button
+        type="reset"
+        className="bg-white px-6 py-2 font-bold hover:shadow-2xl text-black rounded"
+      >
+        Clear
+      </button>
+      <button
+        type="submit"
+        className="bg-medium_slate_blue-100 px-6 py-2 font-bold hover:shadow-2xl text-white rounded"
+      >
+        Submit
+      </button>
+    </div>
+    <ToastContainer />
+  </form>
 
-            <ToastContainer />
-          </div>
-        </form>
-        {type.includes("signup") && (
-          <>
-            <center>
-              <Link
-                to="/login"
-                className="text-center mx-auto text-xl font-bold underline "
-              >
-                Already have a account?
-              </Link>
-            </center>
-          </>
-        )}
-        {type.includes("login") && (
-          <>
-            <center>
-              <Link
-                to="/signup"
-                className="text-center mx-auto text-xl font-bold underline "
-              >
-                Have no account?
-              </Link>
-            </center>
-          </>
-        )}
-        {load?<>
-       <center> <Loader className='animate-spin'/></center></>:<></>}
-      </div>
+  {type.includes("signup") && (
+    <p className="text-center mt-4">
+      <Link to="/login" className="text-white underline">
+        Already have an account?
+      </Link>
+    </p>
+  )}
+  {type.includes("login") && (
+    <p className="text-center mt-4">
+      <Link to="/signup" className="text-white underline">
+        Don't have an account?
+      </Link>
+    </p>
+  )}
+  
+  {load && (
+    <div className="flex justify-center mt-6">
+      <Loader className="animate-spin text-white" />
+    </div>
+  )}
+</div>
+
     </>
   );
 }
@@ -185,47 +180,42 @@ function Component(props) {
   };
   return (
     <>
-      <div className={`grid px-5 gap-2 ${!display && "hidden"} mb-2 overflow-hidden`}>
-        <div className="text-center  flex gap-5 justify-center items-center ">
-          <label htmlFor={label} className="mr-2 text-center font-bold text-xl">
-            {" "}
-            {label}
-          </label>
-          <div className="flex gap-5 border-solid border-black border-1 rounded w-[80%] lg:w-[40%] justify-between bg-white">
-            <input
-              type={typ}
-              maxLength={maxlength}
-              placeholder={placeholder}
-              className="p-2   text-black bg-transparent outline-none"
-              onChange={handleChange}
-              name={name}
-              required={required}
-              disabled={disabled}
-              value={value}
-              autoFocus={autoFocus}
-            />
-
-            {type.includes("password") && (
-              <>
-                <div className="pt-2">
-                  {isClick && (
-                    <Eye
-                      onClick={hand}
-                      className="cursor-pointer text-black p-1"
-                    />
-                  )}
-                  {!isClick && (
-                    <EyeOff
-                      onClick={hand}
-                      className="cursor-pointer text-black p-1"
-                    />
-                  )}
-                </div>
-              </>
-            )}
-          </div>
+      <div
+  className={`grid px-5 gap-2 ${!display && "hidden"} mb-2 overflow-hidden`}
+>
+  <div className="flex flex-col lg:flex-row gap-4 items-center">
+    <label
+      htmlFor={label}
+      className="text-center font-bold text-lg md:text-xl w-full lg:w-auto"
+    >
+      {label}
+    </label>
+    <div className="flex items-center gap-2 border border-black rounded w-full bg-white px-3">
+      <input
+        type={typ}
+        maxLength={maxlength}
+        placeholder={placeholder}
+        className="w-full p-2 text-black bg-transparent outline-none"
+        onChange={handleChange}
+        name={name}
+        required={required}
+        disabled={disabled}
+        value={value}
+        autoFocus={autoFocus}
+      />
+      {type.includes("password") && (
+        <div>
+          {isClick ? (
+            <Eye onClick={hand} className="cursor-pointer text-black" />
+          ) : (
+            <EyeOff onClick={hand} className="cursor-pointer text-black" />
+          )}
         </div>
-      </div>
+      )}
+    </div>
+  </div>
+</div>
+
     </>
   );
 }
