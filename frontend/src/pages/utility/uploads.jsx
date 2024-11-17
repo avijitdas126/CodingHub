@@ -211,7 +211,7 @@ function Uploads(props) {
             >
            
               
-              <input type="file" ref={file} />
+              <input type="file" ref={file} className='text-[80%]'/>
 
             
          
