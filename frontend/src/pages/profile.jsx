@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Nav from "./utility/nav";
 import data from "/src/pages/utility/details.json";
 import Card from "./utility/card";
-import { NavLink, useParams, Link } from "react-router-dom";
+import { NavLink, useParams, Link,useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import Cookies from "js-cookie";
 import moment from "moment";
@@ -12,6 +12,7 @@ import { Community_card } from "./utility/community_card";
 import { Edit, LogOut, Minus, Plus, X } from "lucide-react";
 
 export const Profile = () => {
+  let navi=useNavigate()
   const { userid } = useParams();
   const [isOwnProfile, setisOwnProfile] = useState(
     userid.includes(Cookies.get("userid"))
@@ -38,7 +39,7 @@ export const Profile = () => {
     e.preventDefault();
     let image = upload.current.files[0];
     const updateUserProfile = async (data) => {
-      const url = `${import.meta.env.SERVER}/user/edit`;
+      const url = `${import.meta.env.REACT_APP_SERVER}/user/edit`;
       try {
         let fetch_data = await fetch(url, {
           method: "POST",
@@ -138,7 +139,7 @@ export const Profile = () => {
     let data = { token: Cookies.get("token"), userid: userid };
     let play = async () => {
       try {
-        let fetch_data = await fetch(`${import.meta.env.SERVER}/user/get_user`, {
+        let fetch_data = await fetch(`${import.meta.env.REACT_APP_SERVER}/user/get_user`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -187,7 +188,7 @@ export const Profile = () => {
       let data = { token: Cookies.get("token"), follower_id: userid };
       let play = async () => {
         try {
-          let fetch_data = await fetch(`${import.meta.env.SERVER}/user/follow/`, {
+          let fetch_data = await fetch(`${import.meta.env.REACT_APP_SERVER}/user/follow/`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -256,6 +257,7 @@ export const Profile = () => {
             half={true}
             className="w-[85%]"
           />
+
           <div className="p-5  m-4  mb-5 ">
             <div className="bg-slate-700 text-white pb-5 rounded-lg">
               <div className="flex mt-16 items-center p-5 justify-around gap-2 ">
@@ -265,6 +267,7 @@ export const Profile = () => {
                   title={user_detail?.name}
                   className="rounded-full w-[25%] h-[25%] lg:w-[15%] lg:h-[15%]"
                 />
+                
                 <p className="grid gap-2 justify-items-center">
                   <span className="title-font font-medium sm:text-4xl text-3xl ">
                     {user_detail?.followers?.length}
@@ -517,6 +520,50 @@ export const Profile = () => {
               </div>
             </div>
           </div>
+
+          <div
+              className={`fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50  ${
+                isLogout ? "block" : "hidden"
+              }`}
+            >
+              
+              <div className="bg-white p-8 rounded-lg shadow-lg relative">
+                <button
+                  className="absolute top-2 right-2 text-black"
+                  onClick={() => {
+                    setisLogout(!isLogout);
+                  }}
+                >
+                  &times;
+                </button>
+                <h2 className="text-2xl font-bold mb-4">
+                  Want to logout from dashboard?
+                </h2>
+                <div className="flex justify-around">
+                  <button
+                    className="btn"
+                    onClick={() => {
+                      setisLogout(!isLogout);
+                    }}
+                  >
+                    <X /> Cancel
+                  </button>
+                  <button
+                    className="btn bg-red-600 hover:bg-red-700"
+                    onClick={() => {
+                      Cookies.remove("token");
+                      Cookies.remove("userid");
+                      navi('/login')
+                     
+                    }}
+                  >
+                    {" "}
+                    <LogOut /> Logout
+                  </button>
+                </div>
+              </div>
+              {/* <h1 className='font-extrabold text-2xl mb-5 mx-auto'>Create a New File</h1> */}
+            </div>
         </div>
       </div>
     </>

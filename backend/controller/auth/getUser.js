@@ -21,7 +21,7 @@ get_user.post("/", (req, res) => {
     let play=async()=>{
 try {
     let userid1=data?.userid;
-    if(userid!=userid1){
+    if(!userid.includes(userid1)){
         let views=await User.updateOne({userid},{
             $push:{
                 views:userid1

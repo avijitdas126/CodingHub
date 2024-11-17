@@ -13,28 +13,6 @@ export default function App() {
   let color = "#000000";
   return (
     <>
-      {/* <Theme file="Hello_world" file_id="" profile_name="Avijit Das" client_id="" Html="" Css="" Js="" readonly={false}/> */}
-      {/* {/* < Card bool={true} user_name="Avijit Das" file_name="Hello_world"/> */}
-{/* < Card bool={false} user_name="Avijit Das" file_name="Hello_world"/>  */}
-      {/* <Asset url="/download.jfif" index="1"/> */}
-      {/* <Upload /> */}
-      {/* <Nav
-        data={data[2]}
-        color={color}
-        parallel={true}
-        logo={true}
-        textColor=''
-        searchIconColor={'blue'}
-        search={true}
-        profile={true}
-        profile_url={"/"}
-        user={false}
-        user_img={'/download.jfif'}
-        profile_img={
-          "https://lh3.googleusercontent.com/ogw/AF2bZyhGZHzvEXxL4xS4OxPKg60bWU-gzRssFPPutFiVBsdLftg=s32-c-mo"
-        }
-      /> */}
-{/* <Dashboard /> */}
 <PublicRoute />
     </>
   );

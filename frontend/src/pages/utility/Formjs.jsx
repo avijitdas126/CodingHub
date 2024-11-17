@@ -3,7 +3,7 @@ import "../../index.css";
 import Cookies from "js-cookie";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-import { Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff, Loader } from "lucide-react";
 function Formjs(props) {
   let navigator = useNavigate();
   let { title, component, type } = props;
@@ -11,6 +11,7 @@ function Formjs(props) {
   const [data, setdata] = useState({
     token: Cookies.get("token"),
   });
+  const [load, setload] = useState(false)
   console.log(data);
   const [submit, setsubmit] = useState(false);
   useEffect(() => {
@@ -35,15 +36,16 @@ function Formjs(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setsubmit(true);
+    setload(true)
     console.log("Form submitted with data:", data);
   };
   useEffect(() => {
     console.log(submit)
     if (submit) {
       const url = type.includes("signup")
-        ? "import.meta.env.SERVER/user/signup"
+        ? `${import.meta.env.REACT_APP_SERVER}/user/signup`
         : type.includes("login")
-        ? "import.meta.env.SERVER/user/login"
+        ? `${import.meta.env.REACT_APP_SERVER}/user/login`
         : "";
       if (data["token"] == undefined) {
         setdata((prevData) => ({
@@ -65,12 +67,14 @@ function Formjs(props) {
         let resdata=await res.json()
         if(!res.ok) throw new Error(resdata.msg)
           Cookies.set("token", resdata.token, { expires: 90 });
+        setload(false)
         toast.success(resdata.msg);
-        console.log(data);
+        console.log(resdata);
         navigator("/dashboard");
       } catch (error) {
         toast.error(error.message);
               setsubmit(false)
+              setload(false)
       }
       
      }
@@ -81,7 +85,6 @@ function Formjs(props) {
 
   return (
     <>
-      {/* {console.log(component)} */}
       <div className="my-10 md:mx-10 bg-electric_indigo-600 text-white py-10 rounded mx-auto w-[80%] border-violet-900 border-solid border-2 shadow hover:shadow-lg">
         <h1 className="text-center text-5xl font-bold underline pb-10">
           {title}
@@ -131,7 +134,6 @@ function Formjs(props) {
                 Already have a account?
               </Link>
             </center>
-            {/* <Link to='/login' className='text-center mx-auto'>Already have a account?</Link> */}
           </>
         )}
         {type.includes("login") && (
@@ -144,9 +146,10 @@ function Formjs(props) {
                 Have no account?
               </Link>
             </center>
-            {/* <Link to='/login' className='text-center mx-auto'>Already have a account?</Link> */}
           </>
         )}
+        {load?<>
+       <center> <Loader className='animate-spin'/></center></>:<></>}
       </div>
     </>
   );

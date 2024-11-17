@@ -25,7 +25,7 @@ const verifyToken=(token)=>{
 console.log('call')
 let payload={token}
 // console.log(payload)
-fetch('import.meta.env.SERVER/user/check_token',
+fetch(`${import.meta.env.REACT_APP_SERVER}/user/check_token`,
   {
     method: 'POST',
     headers: {

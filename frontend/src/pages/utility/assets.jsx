@@ -30,7 +30,7 @@ setTimeout(()=>{
     try {
       let token=Cookies.get('token')
       if(!token) throw new Error('Please login');
-      const response = await fetch('import.meta.env.SERVER/user/assert/delete',{
+      const response = await fetch(`${import.meta.env.REACT_APP_SERVER}/user/assert/delete`,{
         method: "POST",
         headers: {
           "Content-Type": "application/json",

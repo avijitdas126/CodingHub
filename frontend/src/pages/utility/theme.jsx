@@ -119,7 +119,7 @@ function Theme(props) {
     isLogin = true,
     follower_id = "",
   } = props;
-  let navigator = useNavigate();
+  let navi = useNavigate();
   const [theme, setTheme] = useState("");
   const [isFollowing, setisFollowing] = useState(isFollow);
   const [font, setfont] = useState("");
@@ -143,7 +143,7 @@ function Theme(props) {
     let data = { code_id: file_id, file_name: file, profile: profile_name };
     let play = async () => {
       try {
-        let fetch_data = await fetch("import.meta.env.SERVER/user/share/url", {
+        let fetch_data = await fetch(`${import.meta.env.REACT_APP_SERVER}/user/share/url`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -155,7 +155,7 @@ function Theme(props) {
         let res = await fetch_data.json();
         seturl(res.url);
       } catch (error) {
-        let fetch_data = await fetch("import.meta.env.SERVER/user/share/post", {
+        let fetch_data = await fetch(`${import.meta.env.REACT_APP_SERVER}/user/share/post`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -191,6 +191,10 @@ function Theme(props) {
     );
   };
   const saveCode = () => {
+    if(isCommnity || shareable ){
+ 
+  }
+  else{
     let payload = {
       token: Cookies.get("token"),
       code_id: file_id,
@@ -202,7 +206,7 @@ function Theme(props) {
     let play = async () => {
       try {
         let fetch_data = await fetch(
-          "import.meta.env.SERVER/user/code/savecode",
+          `${import.meta.env.REACT_APP_SERVER}/user/code/savecode`,
           {
             method: "POST",
             headers: {
@@ -224,6 +228,7 @@ function Theme(props) {
     };
     play();
     console.log(payload);
+  }
   };
   const handleThemeChange = (event) => {
     setTheme(event.target.value);
@@ -275,7 +280,7 @@ function Theme(props) {
       let data = { token: Cookies.get("token"), follower_id };
       let play = async () => {
         try {
-          let fetch_data = await fetch("import.meta.env.SERVER/user/follow/", {
+          let fetch_data = await fetch(`${import.meta.env.REACT_APP_SERVER}/user/follow/`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -386,7 +391,7 @@ function Theme(props) {
           </div>
         </div>
 
-        <div className="flex   items-center">
+        <div className="flex  items-center">
           <ToastContainer />
 
           {!shareable && (
@@ -438,7 +443,7 @@ function Theme(props) {
                 className="btn"
                 title="Login"
                 onClick={() => {
-                  navigator("/login");
+                  navi("/login");
                 }}
               >
                 <LogInIcon />
@@ -488,9 +493,9 @@ function Theme(props) {
                     onClick={() => {
                       const handleCopy = async () => {
                         try {
-                          await navigator.clipboard.writeText(url);
+                          await navigator.clipboard.writeText(url)
                         } catch (err) {
-                          console.error("Failed to copy text: ", err);
+                          console.error("Failed to copy text: ", err.message);
                         }
                       };
                       handleCopy();

@@ -19,7 +19,7 @@ const Share_community = () => {
   let navi = useNavigate();
   let play = async (token) => {
     try {
-      let fetch_data = await fetch(`${import.meta.env.SERVER}/user/check_token`, {
+      let fetch_data = await fetch(`${import.meta.env.REACT_APP_SERVER}/user/check_token`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -48,7 +48,7 @@ const Share_community = () => {
     let play = async () => {
       try {
         let fetch_data = await fetch(
-          `${import.meta.env.SERVER}/user/live/community/showcode`,
+          `${import.meta.env.REACT_APP_SERVER}/user/live/community/showcode`,
           {
             method: "POST",
             headers: {

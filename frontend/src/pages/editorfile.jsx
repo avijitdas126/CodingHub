@@ -24,7 +24,7 @@ const EditorFile = () => {
     const fetchCode = async () => {
       try {
         const response = await fetch(
-          `${import.meta.env.SERVER}/user/code/showcode`,
+          `${import.meta.env.REACT_APP_SERVER}/user/code/showcode`,
           {
             method: "POST",
             headers: {
