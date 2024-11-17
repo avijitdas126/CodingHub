@@ -187,7 +187,7 @@ function Theme(props) {
     setid(
       setTimeout(() => {
         saveCode();
-      }, 5000)
+      }, 60000*5)
     );
   };
   const saveCode = () => {
