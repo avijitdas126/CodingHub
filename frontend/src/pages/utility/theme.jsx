@@ -143,7 +143,7 @@ function Theme(props) {
     let data = { code_id: file_id, file_name: file, profile: profile_name };
     let play = async () => {
       try {
-        let fetch_data = await fetch(`${import.meta.env.REACT_APP_SERVER}/user/share/url`, {
+        let fetch_data = await fetch(`https://codinghub-5gt0.onrender.com/user/share/url`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -155,7 +155,7 @@ function Theme(props) {
         let res = await fetch_data.json();
         seturl(res.url);
       } catch (error) {
-        let fetch_data = await fetch(`${import.meta.env.REACT_APP_SERVER}/user/share/post`, {
+        let fetch_data = await fetch(`https://codinghub-5gt0.onrender.com/user/share/post`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -206,7 +206,7 @@ function Theme(props) {
     let play = async () => {
       try {
         let fetch_data = await fetch(
-          `${import.meta.env.REACT_APP_SERVER}/user/code/savecode`,
+          `https://codinghub-5gt0.onrender.com/user/code/savecode`,
           {
             method: "POST",
             headers: {
@@ -280,7 +280,7 @@ function Theme(props) {
       let data = { token: Cookies.get("token"), follower_id };
       let play = async () => {
         try {
-          let fetch_data = await fetch(`${import.meta.env.REACT_APP_SERVER}/user/follow/`, {
+          let fetch_data = await fetch(`https://codinghub-5gt0.onrender.com/user/follow/`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

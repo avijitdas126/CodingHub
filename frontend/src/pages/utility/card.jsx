@@ -47,7 +47,7 @@ function Card(props) {
       const play = async () => {
         try {
           let res = await fetch(
-            `${import.meta.env.REACT_APP_SERVER}/user/live/public/again`,
+            `https://codinghub-5gt0.onrender.com/user/live/public/again`,
             {
               method: "POST",
               headers: {
@@ -88,7 +88,7 @@ function Card(props) {
     };
     const play = async () => {
       try {
-        let res = await fetch(`${import.meta.env.REACT_APP_SERVER}/user/code/deletecode`, {
+        let res = await fetch(`https://codinghub-5gt0.onrender.com/user/code/deletecode`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

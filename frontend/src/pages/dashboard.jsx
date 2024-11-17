@@ -24,7 +24,7 @@ const Dashboard = () => {
     let data = { token: Cookies.get("token"), userid: Cookies.get("userid") };
     let play = async () => {
       try {
-        let fetch_data = await fetch(`${import.meta.env.REACT_APP_SERVER}/user/get_user`, {
+        let fetch_data = await fetch(`https://codinghub-5gt0.onrender.com/user/get_user`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -75,7 +75,7 @@ const Dashboard = () => {
     let play = async () => {
       try {
         let fetch_data = await fetch(
-          `${import.meta.env.REACT_APP_SERVER}/user/code/new/project`,
+          `https://codinghub-5gt0.onrender.com/user/code/new/project`,
           {
             method: "POST",
             headers: {
@@ -227,7 +227,7 @@ const Dashboard = () => {
                 isLogout ? "block" : "hidden"
               }`}
             >
-              
+
               <div className="bg-white p-8 rounded-lg shadow-lg relative">
                 <button
                   className="absolute top-2 right-2 text-black"
