@@ -206,17 +206,24 @@ function Uploads(props) {
         >
           <form className="text-center">
             <div
-              className=" flex gap-8 text-center justify-center  uppercase bg-raisin_black-700 text-white font-bold
+              className=" grid justify-items-center gap-8 text-center justify-center  uppercase bg-raisin_black-700 text-white font-bold
            p-4 m-2 select-none cursor-pointer"
             >
-              <UploadIcon />
+           
+              
               <input type="file" ref={file} />
 
-              {isUpload && (
+            
+         
+
+             <div>
+             {isUpload && (
                 <>
                   <Loader className="animate-spin" />
                 </>
               )}
+              
+              </div> 
             </div>
             <input
               type="Submit"
