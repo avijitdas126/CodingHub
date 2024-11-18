@@ -275,7 +275,7 @@ export const Profile = () => {
                   src={user_detail?.avatar_url}
                   alt={user_detail?.name}
                   title={user_detail?.name}
-                  className="rounded-full w-[120px] h-[120px] lg:w-[200px] lg:h-[200px]"
+                  className="rounded-full w-[70px] h-[70px] lg:w-[150px] lg:h-[150px]"
                 />
                 
                 <p className="grid gap-2 justify-items-center">
