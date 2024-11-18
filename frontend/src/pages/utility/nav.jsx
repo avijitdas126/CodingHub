@@ -205,8 +205,8 @@ function Nav(props) {
             <div>
               <Link to={profile_url}>
 <img
-  width={70}
-  height={70}
+  width={30}
+  height={30}
   src={profile_img}
   alt="profile"
   className="rounded-full w-[70px] h-[70px] m-2"
