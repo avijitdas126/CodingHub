@@ -9,7 +9,7 @@ import moment from "moment";
 import Public from "./utility/public";
 import Result from "./utility/result";
 import { Community_card } from "./utility/community_card";
-import { Edit, LogOut, Minus, Plus, X } from "lucide-react";
+import { Edit, LogOut, Minus, Plus, X, Loader} from "lucide-react";
 
 export const Profile = () => {
   let navi=useNavigate()
@@ -28,6 +28,7 @@ export const Profile = () => {
   const [code, setcode] = useState([]);
   const [recent, setrecent] = useState(true);
   const [community, setcommunity] = useState(false);
+  const [load, setload] = useState(false);
   const onClose = () => {
     setmodel(false);
   };
@@ -37,6 +38,7 @@ export const Profile = () => {
 
   const submit = (e) => {
     e.preventDefault();
+    setload(true);
     let image = upload.current.files[0];
     const updateUserProfile = async (data) => {
       const url = `https://codinghub-5gt0.onrender.com/user/edit`;
@@ -51,15 +53,18 @@ export const Profile = () => {
         let res = await fetch_data.json();
         if (res.code === 200) {
           toast.success(res.msg);
+          setload(false);
           setTimeout(() => {
             window.location.reload();
           }, 3000);
         } else {
           toast.error("Profile update failed");
+          setload(false);
         }
       } catch (error) {
         toast.error("User updated unsuccessfully");
         console.error("Error updating user:", error);
+        setload(false);
       }
     };
     // If no image is uploaded, submit data directly
@@ -87,12 +92,14 @@ export const Profile = () => {
       alert(
         "Invalid format\nInstruction\n* JPG, PNG, BMP, GIF, WEBP, AVIF, JFIF file extensions\n* Maximum file size 10MB"
       );
+      setload(false);
       return;
     }
 
     // Check if the image size is within the limit
     if (image.size / 1024 > 10240) {
       alert("Maximum file size 10MB");
+      setload(false);
       return;
     }
 
@@ -125,12 +132,15 @@ export const Profile = () => {
             avatar_url: data.data.url,
             bio: textbox.current.value,
           }); // Ensure the latest state is used
+          setload(false);
         } else {
           toast.error("Profile update failed");
+          setload(false);
         }
       })
       .catch((error) => {
         toast.error("Profile update failed");
+        setload(false);
         console.error("Error uploading image:", error);
       });
   };
@@ -265,7 +275,7 @@ export const Profile = () => {
                   src={user_detail?.avatar_url}
                   alt={user_detail?.name}
                   title={user_detail?.name}
-                  className="rounded-full w-[25%] h-[25%] lg:w-[15%] lg:h-[15%]"
+                  className="rounded-full w-[120px] h-[120px] lg:w-[200px] lg:h-[200px]"
                 />
                 
                 <p className="grid gap-2 justify-items-center">
@@ -517,6 +527,7 @@ export const Profile = () => {
                     />
                   </div>
                 </form>
+                {load &&<center> <Loader className="animate-spin" /></center>}
               </div>
             </div>
           </div>
