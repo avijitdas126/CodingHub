@@ -209,7 +209,7 @@ function Nav(props) {
   height={30}
   src={profile_img}
   alt="profile"
-  className="rounded-full w-[70px] h-[70px] m-2"
+  className="rounded-full w-[30px] h-[30px] m-2"
 />
 
               </Link>
