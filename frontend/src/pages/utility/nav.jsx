@@ -204,13 +204,14 @@ function Nav(props) {
           {profile && (
             <div>
               <Link to={profile_url}>
-                <img
-                  width={32}
-                  height={50}
-                  src={profile_img}
-                  alt="profile"
-                  className="rounded-full m-2"
-                />
+<img
+  width={70}
+  height={70}
+  src={profile_img}
+  alt="profile"
+  className="rounded-full w-[70px] h-[70px] m-2"
+/>
+
               </Link>
             </div>
           )}
